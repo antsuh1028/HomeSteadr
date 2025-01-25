@@ -1,31 +1,41 @@
-import React from "react";
 import { Link } from "react-router-dom";
-import Logo from "./Logo";
 
-const Navbar: React.FC = () => {
+const Navbar = () => {
   return (
-    <nav className="bg-white shadow-md fixed top-0 left-0 w-full z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
-          <div className="flex">
-            <div className="flex-shrink-0 flex items-center">
-              <Logo />
-            </div>
-            <div className="hidden sm:ml-6 sm:flex sm:space-x-8 ml-auto">
-              <Link
-                to="/"
-                className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
-              >
-                Home
-              </Link>
-              <Link
-                to="/portfolio"
-                className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
-              >
-                Portfolio
-              </Link>
-            </div>
-          </div>
+    <nav className="bg-[#B8B8B8] px-6 py-4 fixed top-0 left-0 w-full z-50">
+      <div className="flex items-center justify-between">
+        <Link to="/" className="text-black">
+          <svg
+            width="32"
+            height="24"
+            viewBox="0 0 32 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="hover:opacity-80 transition-opacity"
+          >
+            <path d="M16 0L32 24H0L16 0Z" fill="black" />
+            <path d="M13 12L19 24H7L13 12Z" fill="black" />
+          </svg>
+          <span className="sr-only">Home</span>
+        </Link>
+
+        <div className="flex items-center gap-8 ml-auto">
+          <Link
+            to="/"
+            className="text-black hover:opacity-80 transition-opacity text-sm"
+          >
+            Home
+          </Link>
+          <Link
+            to="/portfolio"
+            className="text-black hover:opacity-80 transition-opacity text-sm"
+          >
+            Portfolio
+          </Link>
+          <button
+            className="w-8 h-8 bg-black rounded-full hover:opacity-80 transition-opacity"
+            aria-label="Profile"
+          />
         </div>
       </div>
     </nav>

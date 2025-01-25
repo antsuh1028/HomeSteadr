@@ -21,9 +21,9 @@ const Logo: React.FC<React.SVGProps<SVGSVGElement>> = () => {
         x="0"
         y="115"
         fill="#000000"
-        font-size="5px"
-        font-weight="bold"
-        font-family="'Helvetica Neue', Helvetica, Arial-Unicode, Arial, Sans-serif"
+        fontSize="5px"
+        fontWeight="bold"
+        fontFamily="'Helvetica Neue', Helvetica, Arial-Unicode, Arial, Sans-serif"
       >
         Created by parkjisun
       </text>
@@ -31,9 +31,9 @@ const Logo: React.FC<React.SVGProps<SVGSVGElement>> = () => {
         x="0"
         y="120"
         fill="#000000"
-        font-size="5px"
-        font-weight="bold"
-        font-family="'Helvetica Neue', Helvetica, Arial-Unicode, Arial, Sans-serif"
+        fontSize="5px"
+        fontWeight="bold"
+        fontFamily="'Helvetica Neue', Helvetica, Arial-Unicode, Arial, Sans-serif"
       >
         from the Noun Project
       </text>
