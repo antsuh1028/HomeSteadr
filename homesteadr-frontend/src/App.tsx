@@ -32,4 +32,20 @@ function App() {
   )
 }
 
-export default App
+export default App;
+
+
+// // pages/_app.tsx or app/layout.tsx     <------ example of wrapping the app in authprovider
+// import { AuthProvider } from "@/contexts/AuthContext";
+
+// function MyApp({ Component, pageProps }) {
+//   return (
+//     <AuthProvider>
+//       <Component {...pageProps} />
+//     </AuthProvider>
+//   );
+// }
+
+// export default MyApp;
+
+
