@@ -7,38 +7,67 @@ import {
     ReactNode,
     useMemo,
 } from "react";
-import { auth } from "@/firebase/config";
-import { User, onAuthStateChanged } from "firebase/auth";
+import { auth, db } from "@/firebase/config";
+import { User as FirebaseUser, onAuthStateChanged } from "firebase/auth";
+import { User } from "../firebase/db";
+import { doc, onSnapshot } from "firebase/firestore";
 
 interface AuthContextType {
-    user: User | null;
+    firebaseUser: FirebaseUser | null;
+    userData: User | null;
     loading: boolean;
 }
 
 const AuthContext = createContext<AuthContextType>({
-    user: null,
+    firebaseUser: null,
+    userData: null,
     loading: true,
 });
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-    const [user, setUser] = useState<User | null>(null);
+    const [firebaseUser, setFirebaseUser] = useState<FirebaseUser | null>(null);
+    const [userData, setUserData] = useState<User | null>(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-            setUser(user);
-            setLoading(false);
+        const unsubscribeAuth = onAuthStateChanged(auth, (user) => {
+            setFirebaseUser(user);
+            if (!user) {
+                setUserData(null);
+                setLoading(false);
+            }
         });
 
-        return () => unsubscribe();
+        return () => unsubscribeAuth();
     }, []);
+
+    useEffect(() => {
+        let unsubscribeFirestore: (() => void) | undefined;
+
+        if (firebaseUser) {
+            const userRef = doc(db, "users", firebaseUser.uid);
+            unsubscribeFirestore = onSnapshot(userRef, (doc) => {
+                if (doc.exists()) {
+                    setUserData(doc.data() as User);
+                }
+                setLoading(false);
+            });
+        }
+
+        return () => {
+            if (unsubscribeFirestore) {
+                unsubscribeFirestore();
+            }
+        };
+    }, [firebaseUser]);
 
     const value = useMemo(
         () => ({
-            user,
+            firebaseUser,
+            userData,
             loading,
         }),
-        [user, loading]
+        [firebaseUser, userData, loading]
     );
 
     return (
