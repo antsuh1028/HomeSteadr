@@ -58,4 +58,3 @@ export const exaSearch = async(query: string, options: exaOptions = defaultExaOp
         console.error("Error:", error);
     }
 };
-
