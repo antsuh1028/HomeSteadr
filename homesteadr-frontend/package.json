@@ -12,10 +12,12 @@
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.5",
     "@radix-ui/react-label": "^2.1.1",
+    "@radix-ui/react-progress": "^1.1.1",
     "@radix-ui/react-scroll-area": "^1.2.2",
     "@radix-ui/react-slot": "^1.1.1",
     "@radix-ui/react-switch": "^1.1.2",
     "@radix-ui/react-toast": "^1.2.5",
+    "@radix-ui/react-tooltip": "^1.1.7",
     "@react-google-maps/api": "^2.20.5",
     "@shadcn/ui": "^0.0.4",
     "class-variance-authority": "^0.7.1",

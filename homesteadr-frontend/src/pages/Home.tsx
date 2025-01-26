@@ -12,6 +12,7 @@ import articles from "@/assets/StockArticles";
 import { CityResult, DatafinitiResponse } from '../../../homesteadr-backend/types/types';
 import { properties1,properties10,properties2, properties3,properties5,properties6,properties8,properties9} from "@/assets/properties"
 import extractMarkers from "@/utils/getMarkers";
+import NeighborhoodScoreCard from "@/components/ui/NeighborhoodScore"
 
 interface Property {
 	pictureUrl: string | undefined,
@@ -46,6 +47,8 @@ const propertiesArray: CityResult[][] = [
   properties10 || {}
 ];
 console.log(properties1);
+
+
 
 
 
@@ -105,13 +108,6 @@ export default function Home() {
   }, [selectedCities]);
 
 
-
-  // // first indexed number represents city index
-  // // second indexed number represents address index
-  // selectedCities[0].city
-  // selectedCities[0].data[0].address
-  // selectedCities[0].data[0].squareFeet
-
   const refreshMap = useCallback(() => {
     setMapKey((prevKey) => prevKey + 1)
   }, [])
@@ -123,7 +119,7 @@ export default function Home() {
 
 
   return (
-    <div className="flex h-screen overflow-hidden">
+    <div className="flex overflow-hidden mt-16" style={{ height: "calc(100vh - 4rem)" }}>
       {/* Map Section */}
       <div className="w-3/5 relative h-screen">
       <MapView 
@@ -140,7 +136,7 @@ export default function Home() {
             Refresh Map
           </Button>
         </div>
-        <Button className="absolute bottom-4 right-4 z-10" onClick={() => setShowNewsModal(true)}>
+        <Button className="absolute bottom-20 right-4 z-10" onClick={() => setShowNewsModal(true)}>
           Show News
         </Button>
       </div>
@@ -245,8 +241,29 @@ export default function Home() {
               <CarouselNext className="right-0 z-10" />
             </Carousel>
           </div>
-          <div className="w-full  mt-16 md:w-1/3 bg-white rounded-lg shadow-lg p-4 min-h-[400px]">
-          here</div>
+          <div className="mt-24 overflow-y-auto max-h-96 p-4" >  
+            <NeighborhoodScoreCard 
+              title="San Antonio Report Card" 
+              overallScore={85} 
+              crimeScore={4.2} 
+              schoolScore={8.9} 
+              jobScore={7.6} 
+            />
+            <NeighborhoodScoreCard 
+              title="Houston Report Card" 
+              overallScore={72} 
+              crimeScore={6.5} 
+              schoolScore={7.4} 
+              jobScore={8.2} 
+            />
+            <NeighborhoodScoreCard 
+              title="Austin Report Card" 
+              overallScore={90} 
+              crimeScore={7.5} 
+              schoolScore={9.5} 
+              jobScore={9.0} 
+            />
+          </div>
         </div>
       </Modal>
     </div>
