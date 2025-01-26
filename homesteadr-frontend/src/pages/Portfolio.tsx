@@ -2,100 +2,48 @@ import PortfolioChart from "../components/PortfolioChart";
 import { StatsDisplay } from "../components/StatsDisplay";
 import { PropertyTable } from "../components/PropertyTable";
 import { Building, Home } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { userOperations } from "@/firebase/db";
+import { useAuth } from "@/contexts/AuthContext";
 
-const portfolioData = [
-  {
-    location: "123 Main St, Springfield, IL",
-    currentPrice: 500000,
-    originalPrice: 400000,
-    size: 2000,
-    type: "Single Family Residential",
-  },
-  {
-    location: "456 Elm St, Springfield, IL",
-    currentPrice: 600000,
-    originalPrice: 450000,
-    size: 2500,
-    type: "Single Family Residential",
-  },
-  {
-    location: "789 Oak St, Springfield, IL",
-    currentPrice: 550000,
-    originalPrice: 420000,
-    size: 2200,
-    type: "Single Family Residential",
-  },
-  {
-    location: "101 Maple St, Springfield, IL",
-    currentPrice: 700000,
-    originalPrice: 500000,
-    size: 3000,
-    type: "Single Family Residential",
-  },
-  {
-    location: "202 Pine St, Springfield, IL",
-    currentPrice: 650000,
-    originalPrice: 480000,
-    size: 2800,
-    type: "Single Family Residential",
-  },
-  {
-    location: "303 Cedar St, Springfield, IL",
-    currentPrice: 620000,
-    originalPrice: 460000,
-    size: 2600,
-    type: "Single Family Residential",
-  },
-  {
-    location: "404 Birch St, Springfield, IL",
-    currentPrice: 580000,
-    originalPrice: 440000,
-    size: 2400,
-    type: "Single Family Residential",
-  },
-  {
-    location: "505 Walnut St, Springfield, IL",
-    currentPrice: 560000,
-    originalPrice: 430000,
-    size: 2300,
-    type: "Single Family Residential",
-  },
-  {
-    location: "606 Chestnut St, Springfield, IL",
-    currentPrice: 540000,
-    originalPrice: 420000,
-    size: 2200,
-    type: "Single Family Residential",
-  },
-  {
-    location: "707 Ash St, Springfield, IL",
-    currentPrice: 520000,
-    originalPrice: 410000,
-    size: 2100,
-    type: "Single Family Residential",
-  },
-];
+interface SavedHome {
+  location: string;
+  currentPrice: number;
+  originalPrice: number;
+  size: number;
+  type: string;
+}
 
-const watchlistData = [
-  {
-    location: "123 Main St, Springfield, IL",
-    currentPrice: 500000,
-    originalPrice: 400000,
-    size: 2000,
-    type: "Single Family Residential",
-  },
-  {
-    location: "456 Elm St, Springfield, IL",
-    currentPrice: 600000,
-    originalPrice: 450000,
-    size: 2500,
-    type: "Single Family Residential",
-  },
-];
+const Portfolio = () => {
+  const { firebaseUser } = useAuth();
+  const [portfolioData, setPortfolioData] = useState<SavedHome[]>([]);
+  const [watchlistData, setWatchlistData] = useState<SavedHome[]>([]);
+  const [loading, setLoading] = useState(true);
 
-export default function Portfolio() {
+  const fetchUserData = async () => {
+    if (firebaseUser) {
+      const result = await userOperations.getUserData(firebaseUser.uid);
+      if (result.success) {
+        if (result.data) {
+          setPortfolioData(result.data.portfolio as SavedHome[]);
+          setWatchlistData(result.data.watchlist as SavedHome[]);
+        }
+      } else {
+        console.error("Error fetching user data:", result.error);
+      }
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchUserData();
+  }, [firebaseUser]);
+
   const [selectedView, setSelectedView] = useState<string | null>("portfolio");
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="h-full flex flex-col">
@@ -130,13 +78,43 @@ export default function Portfolio() {
             </button>
           </div>
           {selectedView === "portfolio" && (
-            <PropertyTable data={portfolioData} />
+            <PropertyTable
+              data={
+                portfolioData.length > 0
+                  ? portfolioData
+                  : [
+                      {
+                        location: "Empty",
+                        currentPrice: 0,
+                        originalPrice: 0,
+                        size: 0,
+                        type: "",
+                      },
+                    ]
+              }
+            />
           )}
           {selectedView === "watchlist" && (
-            <PropertyTable data={watchlistData} />
+            <PropertyTable
+              data={
+                watchlistData.length > 0
+                  ? watchlistData
+                  : [
+                      {
+                        location: "Empty",
+                        currentPrice: 0,
+                        originalPrice: 0,
+                        size: 0,
+                        type: "",
+                      },
+                    ]
+              }
+            />
           )}
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default Portfolio;
