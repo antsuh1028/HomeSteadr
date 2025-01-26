@@ -10,21 +10,28 @@ import { ProtectedRoute } from "./components/ProtectedRoute.tsx";
 import ExampleUser from "./pages/ExampleUser.tsx";
 
 function App() {
-    return (
-        <AuthProvider>
-            <BrowserRouter>
-                <Layout>
-                    <Navbar />
-                    <Routes>
-                        <Route path="/home" element={<Home />} />
-                        <Route path="/" element={<LoginPage />} />
-                        <Route path="/portfolio" element={<Portfolio />} />
-                        <Route path="/example" element={<ProtectedRoute><ExampleUser /></ProtectedRoute>} />
-                    </Routes>
-                </Layout>
-            </BrowserRouter>
-        </AuthProvider>
-    );
+  return (
+    <AuthProvider>
+      <BrowserRouter>
+        <Layout>
+          <Navbar />
+          <Routes>
+            <Route path="/home" element={<Home />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/portfolio" element={<Portfolio />} />
+            <Route
+              path="/example"
+              element={
+                <ProtectedRoute>
+                  <ExampleUser />
+                </ProtectedRoute>
+              }
+            />
+          </Routes>
+        </Layout>
+      </BrowserRouter>
+    </AuthProvider>
+  );
 }
 
 export default App;

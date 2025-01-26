@@ -20,6 +20,7 @@ export function StatsDisplay() {
   const { firebaseUser } = useAuth(); // Assuming useAuth provides firebaseUser
 
   const handleRefresh = async () => {
+    console.log("Refresh button clicked"); // Debugging statement
     if (!firebaseUser) return;
 
     try {
