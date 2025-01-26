@@ -464,12 +464,18 @@ interface TransformedApiResponse {
   }
   
 const transformApiResponse = async (apiResponse: any): Promise<PropertyData[]>  => {
+    // console.log("API Response:", apiResponse);
+
+    if (!apiResponse?.records) {
+        console.error("No records found in API response");
+        return [];
+    }
 
     const transformedRecords: PropertyData[] = await Promise.all(apiResponse.records.map(async (property: any)=> {
         let pictureUrl;
         try {
             const { metadataUrl, imageUrl } = getGoogleStreetViewImage(property.address);
-            console.log("google maps stuff:", { metadataUrl, imageUrl });
+            // console.log("google maps stuff:", { metadataUrl, imageUrl });
 
             const metadataResponse = await fetch(metadataUrl);
             type MetadataType = {
@@ -481,14 +487,14 @@ const transformApiResponse = async (apiResponse: any): Promise<PropertyData[]>  
             };
             const metadata: MetadataType = await metadataResponse.json();
 
-            console.log("Metadata response:", metadata);
+            // console.log("Metadata response:", metadata);
 
             if (metadata.status === "OK") {
                 pictureUrl = imageUrl;
             } else {
                 pictureUrl = getMapboxImage(property.latitude, property.longitude);
             }
-            console.log("result img url:", pictureUrl); //TESTING
+            // console.log("result img url:", pictureUrl); //TESTING
         } catch (error) {
             console.error("Error fetching street view:", error);
             pictureUrl = undefined;

@@ -10,7 +10,7 @@ interface Article {
 
   const articles: Article[] = [
     {
-        "articleId": 2,
+        "articleId": 1,
         "headline": "OpenAI and Softbank are starting a $500 billion AI data center company",
         "url": "https://www.theverge.com/2025/1/21/24348816/openai-softbank-ai-data-center-stargate-project",
         "Image_url": "https://duet-cdn.vox-cdn.com/thumbor/0x0:1613x1058/750x500/filters:focal(807x529:808x530):format(webp)/cdn.vox-cdn.com/uploads/chorus_asset/file/25840970/videoframe_1799876.jpg",
