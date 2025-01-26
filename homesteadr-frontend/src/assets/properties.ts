@@ -1,11 +1,13 @@
 import { CityResult } from "../../../homesteadr-backend/types/types";
 
+const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
+
 
 export const properties1: CityResult[] = [{
     "city": "Abilene, TX",
     "data": {
         "0": {
-            "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=1752%20Bent%20Tree%20Dr&key=AIzaSyApERbuGIWmwvw3276XtXQED_kIEIzhFoo&fov=60&pitch=0",
+            "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=1752%20Bent%20Tree%20Dr&key=const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;_kIEIzhFoo&fov=60&pitch=0",
             "price": 324900,
             "squareFeet": 2850,  // Adjusted from 1219680000
             "address": "1752 Bent Tree Dr",
@@ -16,7 +18,7 @@ export const properties1: CityResult[] = [{
             "type": "SINGLE FAMILY RESIDENCE"
         },
         "1": {
-            "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=4400%20Ridgemont%20Dr&key=AIzaSyApERbuGIWmwvw3276XtXQED_kIEIzhFoo&fov=60&pitch=0",
+            "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=4400%20Ridgemont%20Dr&key=const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;_kIEIzhFoo&fov=60&pitch=0",
             "price": 2100000,
             "squareFeet": 6500,  // Adjusted from 5429536200
             "address": "4400 Ridgemont Dr",
@@ -36,7 +38,7 @@ export const properties1: CityResult[] = [{
             }
         },
         "3": {
-            "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=118%20Five%20Oaks%20Rd&key=AIzaSyApERbuGIWmwvw3276XtXQED_kIEIzhFoo&fov=60&pitch=0",
+            "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=118%20Five%20Oaks%20Rd&key=const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;_kIEIzhFoo&fov=60&pitch=0",
             "price": 199900,
             "squareFeet": 1850,  // Adjusted from 82764
             "address": "118 Five Oaks Rd",
@@ -47,7 +49,7 @@ export const properties1: CityResult[] = [{
             "type": "SINGLE FAMILY RESIDENCE"
         },
         "4": {
-            "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=7002%20Maryland%20St&key=AIzaSyApERbuGIWmwvw3276XtXQED_kIEIzhFoo&fov=60&pitch=0",
+            "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=7002%20Maryland%20St&key=const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;_kIEIzhFoo&fov=60&pitch=0",
             "price": 418000,
             "squareFeet": 3200,  // Adjusted from 19839968280
             "address": "7002 Maryland St",
@@ -62,7 +64,7 @@ export const properties1: CityResult[] = [{
     "city": "Dallas-Fort Worth, TX",
     "data": {
         "0": {
-            "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=3711%20Wendelkin%20St&key=AIzaSyApERbuGIWmwvw3276XtXQED_kIEIzhFoo&fov=60&pitch=0",
+            "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=3711%20Wendelkin%20St&key=const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;_kIEIzhFoo&fov=60&pitch=0",
             "price": 247500,
             "squareFeet": 2100,  // Adjusted from 333974520
             "address": "3711 Wendelkin St",
@@ -82,7 +84,7 @@ export const properties1: CityResult[] = [{
             }
         },
         "2": {
-            "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=7507%20Arthurs%20Rd&key=AIzaSyApERbuGIWmwvw3276XtXQED_kIEIzhFoo&fov=60&pitch=0",
+            "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=7507%20Arthurs%20Rd&key=const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;_kIEIzhFoo&fov=60&pitch=0",
             "price": 160000,
             "squareFeet": 1450,  // Adjusted
             "address": "7507 Arthurs Rd",
@@ -92,7 +94,7 @@ export const properties1: CityResult[] = [{
             }
         },
         "3": {
-            "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=7417%20Gairlock%20Dr&key=AIzaSyApERbuGIWmwvw3276XtXQED_kIEIzhFoo&fov=60&pitch=0",
+            "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=7417%20Gairlock%20Dr&key=const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;_kIEIzhFoo&fov=60&pitch=0",
             "price": 995050,
             "squareFeet": 4500,  // Adjusted from 26800
             "address": "7417 Gairlock Dr",
@@ -102,7 +104,7 @@ export const properties1: CityResult[] = [{
             }
         },
         "4": {
-            "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=5517%20WINTON%20ST&key=AIzaSyApERbuGIWmwvw3276XtXQED_kIEIzhFoo&fov=60&pitch=0",
+            "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=5517%20WINTON%20ST&key=const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;_kIEIzhFoo&fov=60&pitch=0",
             "price": 995000,
             "squareFeet": 4800,  // Adjusted
             "address": "5517 WINTON ST",
@@ -117,7 +119,7 @@ export const properties1: CityResult[] = [{
     "city": "Austin, TX",
     "data": {
         "0": {
-            "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=606%20Guadalupe%20St%20Unit%20B5-25&key=AIzaSyApERbuGIWmwvw3276XtXQED_kIEIzhFoo&fov=60&pitch=0",
+            "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=606%20Guadalupe%20St%20Unit%20B5-25&key=const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;_kIEIzhFoo&fov=60&pitch=0",
             "price": 892900,  // Adjusted from 8929
             "squareFeet": 1200,  // Added missing value
             "address": "606 Guadalupe St Unit B5-25",
@@ -127,7 +129,7 @@ export const properties1: CityResult[] = [{
             }
         },
         "1": {
-            "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=9103%20Towana%20Trl&key=AIzaSyApERbuGIWmwvw3276XtXQED_kIEIzhFoo&fov=60&pitch=0",
+            "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=9103%20Towana%20Trl&key=const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;_kIEIzhFoo&fov=60&pitch=0",
             "price": 825000,
             "squareFeet": 3800,  // Adjusted from 48787
             "address": "9103 Towana Trl",
@@ -137,7 +139,7 @@ export const properties1: CityResult[] = [{
             }
         },
         "2": {
-            "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=11505%20Tedford%20St&key=AIzaSyApERbuGIWmwvw3276XtXQED_kIEIzhFoo&fov=60&pitch=0",
+            "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=11505%20Tedford%20St&key=const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;_kIEIzhFoo&fov=60&pitch=0",
             "price": 310000,
             "squareFeet": 2100,  // Adjusted from 860702040
             "address": "11505 Tedford St",
@@ -148,7 +150,7 @@ export const properties1: CityResult[] = [{
             "type": "SINGLE FAMILY RESIDENCE"
         },
         "3": {
-            "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=5025%20Mueller%20Blvd&key=AIzaSyApERbuGIWmwvw3276XtXQED_kIEIzhFoo&fov=60&pitch=0",
+            "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=5025%20Mueller%20Blvd&key=const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;_kIEIzhFoo&fov=60&pitch=0",
             "price": 723300,  // Adjusted from 7233
             "squareFeet": 1500,  // Adjusted
             "address": "5025 Mueller Blvd",
@@ -158,7 +160,7 @@ export const properties1: CityResult[] = [{
             }
         },
         "4": {
-            "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=500%20N%20Capital%20of%20Texas%20Hwy&key=AIzaSyApERbuGIWmwvw3276XtXQED_kIEIzhFoo&fov=60&pitch=0",
+            "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=500%20N%20Capital%20of%20Texas%20Hwy&key=const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;_kIEIzhFoo&fov=60&pitch=0",
             "price": 2338465,
             "squareFeet": 5500,  // Adjusted from 812829.6
             "address": "500 N Capital of Texas Hwy",
@@ -173,7 +175,7 @@ export const properties1: CityResult[] = [{
     "city": "San Antonio, TX",
     "data": {
         "0": {
-            "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=326%20Linda%20Lou%20Dr&key=AIzaSyApERbuGIWmwvw3276XtXQED_kIEIzhFoo&fov=60&pitch=0",
+            "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=326%20Linda%20Lou%20Dr&key=const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;_kIEIzhFoo&fov=60&pitch=0",
             "price": 149900,
             "squareFeet": 1350,  // Adjusted from 233394480
             "address": "326 Linda Lou Dr",
@@ -193,7 +195,7 @@ export const properties1: CityResult[] = [{
             }
         },
         "2": {
-            "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=1102%20Two%20Wood%20Way&key=AIzaSyApERbuGIWmwvw3276XtXQED_kIEIzhFoo&fov=60&pitch=0",
+            "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=1102%20Two%20Wood%20Way&key=const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;_kIEIzhFoo&fov=60&pitch=0",
             "price": 267900,
             "squareFeet": 2200,  // Adjusted from 492881400
             "address": "1102 Two Wood Way",
@@ -204,7 +206,7 @@ export const properties1: CityResult[] = [{
             "type": "SINGLE FAMILY RESIDENCE"
         },
         "3": {
-            "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=3228%20Loma%20Riviera%20Dr&key=AIzaSyApERbuGIWmwvw3276XtXQED_kIEIzhFoo&fov=60&pitch=0",
+            "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=3228%20Loma%20Riviera%20Dr&key=const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;_kIEIzhFoo&fov=60&pitch=0",
             "price": 850000,
             "squareFeet": 4100,  // Adjusted from 406850.39999999997
             "address": "3228 Loma Riviera Dr",
@@ -214,7 +216,7 @@ export const properties1: CityResult[] = [{
             }
         },
         "4": {
-            "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=1690%20Beck%20Dr&key=AIzaSyApERbuGIWmwvw3276XtXQED_kIEIzhFoo&fov=60&pitch=0",
+            "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=1690%20Beck%20Dr&key=const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;_kIEIzhFoo&fov=60&pitch=0",
             "price": 675000,  // Added price
             "squareFeet": 3900,  // Adjusted from 322561800
             "address": "1690 Beck Dr",
@@ -229,7 +231,7 @@ export const properties1: CityResult[] = [{
     "city": "Houston, TX",
     "data": {
         "0": {
-            "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=7770%20Springville%20Dr&key=AIzaSyApERbuGIWmwvw3276XtXQED_kIEIzhFoo&fov=60&pitch=0",
+            "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=7770%20Springville%20Dr&key=const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;_kIEIzhFoo&fov=60&pitch=0",
             "price": 495000,  // Added price
             "squareFeet": 3200,  // Adjusted from 302959800
             "address": "7770 Springville Dr",
@@ -238,7 +240,7 @@ export const properties1: CityResult[] = [{
                 "long": "-95.654711000"
             }
         },"1": {
-            "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=13720%20Hollowgreen%20Dr%20Unit%20706&key=AIzaSyApERbuGIWmwvw3276XtXQED_kIEIzhFoo&fov=60&pitch=0",
+            "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=13720%20Hollowgreen%20Dr%20Unit%20706&key=const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;_kIEIzhFoo&fov=60&pitch=0",
             "price": 179000,
             "squareFeet": 1250,  // Adjusted from 56889360
             "address": "13720 Hollowgreen Dr Unit 706",
@@ -259,7 +261,7 @@ export const properties1: CityResult[] = [{
             "type": "SINGLE FAMILY RESIDENCE"
         },
         "3": {
-            "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=E%205823%20Fairdale%20Ln%20E&key=AIzaSyApERbuGIWmwvw3276XtXQED_kIEIzhFoo&fov=60&pitch=0",
+            "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=E%205823%20Fairdale%20Ln%20E&key=const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;_kIEIzhFoo&fov=60&pitch=0",
             "price": 425000,  // Added price
             "squareFeet": 2800,  // Adjusted from 71307720
             "address": "E 5823 Fairdale Ln E",
@@ -296,7 +298,7 @@ export const properties2: CityResult[] = [
                 }
             },
             "1": {
-                "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=527%20Westford%20St&key=AIzaSyApERbuGIWmwvw3276XtXQED_kIEIzhFoo&fov=60&pitch=0",
+                "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=527%20Westford%20St&key=const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;_kIEIzhFoo&fov=60&pitch=0",
                 "price": 375000,  // Changed from 0
                 "squareFeet": 217800000,
                 "address": "527 Westford St",
@@ -306,7 +308,7 @@ export const properties2: CityResult[] = [
                 }
             },
             "2": {
-                "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=undefined&key=AIzaSyApERbuGIWmwvw3276XtXQED_kIEIzhFoo&fov=60&pitch=0",
+                "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=undefined&key=const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;_kIEIzhFoo&fov=60&pitch=0",
                 "price": 313632,
                 "squareFeet": 20908.8,
                 "address": "2310 Westheimer Rd",  // Added address
@@ -316,7 +318,7 @@ export const properties2: CityResult[] = [
                 }
             },
             "3": {
-                "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=2551%20Anchor%20St&key=AIzaSyApERbuGIWmwvw3276XtXQED_kIEIzhFoo&fov=60&pitch=0",
+                "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=2551%20Anchor%20St&key=const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;_kIEIzhFoo&fov=60&pitch=0",
                 "price": 445000,  // Changed from 0
                 "squareFeet": 234135000,
                 "address": "2551 Anchor St",
@@ -326,7 +328,7 @@ export const properties2: CityResult[] = [
                 }
             },
             "4": {
-                "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=14522%20Hiram%20Clarke%20Rd%20Rd&key=AIzaSyApERbuGIWmwvw3276XtXQED_kIEIzhFoo&fov=60&pitch=0",
+                "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=14522%20Hiram%20Clarke%20Rd%20Rd&key=const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;_kIEIzhFoo&fov=60&pitch=0",
                 "price": 385000,  // Changed from 0
                 "squareFeet": 453546720,
                 "address": "14522 Hiram Clarke Rd Rd",
@@ -341,7 +343,7 @@ export const properties2: CityResult[] = [
         "city": "Austin, TX",
         "data": {
             "0": {
-                "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=4229%20N%20FM%20620&key=AIzaSyApERbuGIWmwvw3276XtXQED_kIEIzhFoo&fov=60&pitch=0",
+                "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=4229%20N%20FM%20620&key=const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;_kIEIzhFoo&fov=60&pitch=0",
                 "price": 193000,
                 "squareFeet": 236530.8,
                 "address": "4229 N FM 620",
@@ -351,7 +353,7 @@ export const properties2: CityResult[] = [
                 }
             },
             "1": {
-                "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=8801%20Wall%20St&key=AIzaSyApERbuGIWmwvw3276XtXQED_kIEIzhFoo&fov=60&pitch=0",
+                "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=8801%20Wall%20St&key=const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;_kIEIzhFoo&fov=60&pitch=0",
                 "price": 525000,  // Changed from 0
                 "squareFeet": 2800,  // Changed from 0
                 "address": "8801 Wall St",
@@ -361,7 +363,7 @@ export const properties2: CityResult[] = [
                 }
             },
             "2": {
-                "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=9101%20Wall%20St&key=AIzaSyApERbuGIWmwvw3276XtXQED_kIEIzhFoo&fov=60&pitch=0",
+                "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=9101%20Wall%20St&key=const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;_kIEIzhFoo&fov=60&pitch=0",
                 "price": 675000,  // Changed from 0
                 "squareFeet": 17397341280,
                 "address": "9101 Wall St",
@@ -400,7 +402,7 @@ export const properties3: CityResult[] = [
         "city": "Abilene, TX",
         "data": {
             "0": {
-                "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=1752%20Bent%20Tree%20Dr&key=AIzaSyApERbuGIWmwvw3276XtXQED_kIEIzhFoo&fov=60&pitch=0",
+                "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=1752%20Bent%20Tree%20Dr&key=const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;_kIEIzhFoo&fov=60&pitch=0",
                 "price": 324900,
                 "squareFeet": 2850,
                 "address": "1752 Bent Tree Dr",
@@ -411,7 +413,7 @@ export const properties3: CityResult[] = [
                 "type": "SINGLE FAMILY RESIDENCE"
             },
             "1": {
-                "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=4400%20Ridgemont%20Dr&key=AIzaSyApERbuGIWmwvw3276XtXQED_kIEIzhFoo&fov=60&pitch=0",
+                "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=4400%20Ridgemont%20Dr&key=const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;_kIEIzhFoo&fov=60&pitch=0",
                 "price": 2100000,
                 "squareFeet": 6500,
                 "address": "4400 Ridgemont Dr",
@@ -431,7 +433,7 @@ export const properties3: CityResult[] = [
                 }
             },
             "3": {
-                "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=118%20Five%20Oaks%20Rd&key=AIzaSyApERbuGIWmwvw3276XtXQED_kIEIzhFoo&fov=60&pitch=0",
+                "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=118%20Five%20Oaks%20Rd&key=const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;_kIEIzhFoo&fov=60&pitch=0",
                 "price": 199900,
                 "squareFeet": 1850,
                 "address": "118 Five Oaks Rd",
@@ -442,7 +444,7 @@ export const properties3: CityResult[] = [
                 "type": "SINGLE FAMILY RESIDENCE"
             },
             "4": {
-                "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=7002%20Maryland%20St&key=AIzaSyApERbuGIWmwvw3276XtXQED_kIEIzhFoo&fov=60&pitch=0",
+                "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=7002%20Maryland%20St&key=const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;_kIEIzhFoo&fov=60&pitch=0",
                 "price": 418000,
                 "squareFeet": 3200,
                 "address": "7002 Maryland St",
@@ -457,7 +459,7 @@ export const properties3: CityResult[] = [
         "city": "Dallas-Fort Worth, TX",
         "data": {
             "0": {
-                "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=3711%20Wendelkin%20St&key=AIzaSyApERbuGIWmwvw3276XtXQED_kIEIzhFoo&fov=60&pitch=0",
+                "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=3711%20Wendelkin%20St&key=const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;_kIEIzhFoo&fov=60&pitch=0",
                 "price": 247500,
                 "squareFeet": 2100,
                 "address": "3711 Wendelkin St",
@@ -477,7 +479,7 @@ export const properties3: CityResult[] = [
                 }
             },
             "2": {
-                "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=7507%20Arthurs%20Rd&key=AIzaSyApERbuGIWmwvw3276XtXQED_kIEIzhFoo&fov=60&pitch=0",
+                "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=7507%20Arthurs%20Rd&key=const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;_kIEIzhFoo&fov=60&pitch=0",
                 "price": 160000,
                 "squareFeet": 1450,
                 "address": "7507 Arthurs Rd",
@@ -487,7 +489,7 @@ export const properties3: CityResult[] = [
                 }
             },
             "3": {
-                "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=7417%20Gairlock%20Dr&key=AIzaSyApERbuGIWmwvw3276XtXQED_kIEIzhFoo&fov=60&pitch=0",
+                "pictureUrl": "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=7417%20Gairlock%20Dr&key=const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;_kIEIzhFoo&fov=60&pitch=0",
                 "price": 595000,
                 "squareFeet": 3500,
                 "address": "7417 Gairlock Dr",
