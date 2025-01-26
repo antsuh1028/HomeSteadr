@@ -17,7 +17,7 @@ const initialStats: Stat[] = [
 
 export function StatsDisplay() {
   const [stats, setStats] = useState<Stat[]>(initialStats);
-  const { firebaseUser,  } = useAuth(); // Assuming useAuth provides firebaseUser
+  const { firebaseUser } = useAuth(); // Assuming useAuth provides firebaseUser
 
   const handleRefresh = async () => {
     console.log("Refresh button clicked"); // Debugging statement
@@ -96,7 +96,7 @@ export function StatsDisplay() {
             key={stat.label}
             className="rounded-lg border bg-card p-6 shadow-sm"
           >
-            <p className="text-sm text-gray-400">{stat.label}</p>
+            <p className="text-sm ">{stat.label}</p>
             <p
               className={`text-2xl font-bold mt-2 ${
                 stat.color || "text-white"

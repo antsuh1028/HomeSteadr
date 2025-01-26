@@ -8,7 +8,7 @@ import {
     useMemo,
 } from "react";
 import { auth, db } from "@/firebase/config";
-import { User as FirebaseUser, onAuthStateChanged } from "firebase/auth";
+import { User as FirebaseUser, onAuthStateChanged, signOut } from "firebase/auth";
 import { User } from "../firebase/db";
 import { doc, onSnapshot } from "firebase/firestore";
 
@@ -16,12 +16,14 @@ interface AuthContextType {
     firebaseUser: FirebaseUser | null;
     userData: User | null;
     loading: boolean;
+    logout: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType>({
     firebaseUser: null,
     userData: null,
     loading: true,
+    logout: async () => {},
 });
 
 export function AuthProvider({ children }: { children: ReactNode }) {
@@ -61,11 +63,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         };
     }, [firebaseUser]);
 
+    const logout = async() => {
+        await signOut(auth);
+        setFirebaseUser(null);
+        setUserData(null);
+    };
+
     const value = useMemo(
         () => ({
             firebaseUser,
             userData,
             loading,
+            logout,
         }),
         [firebaseUser, userData, loading]
     );
