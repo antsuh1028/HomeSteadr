@@ -10,109 +10,195 @@ interface Article {
 
   const articles: Article[] = [
     {
-        "articleId": 1,
-        "headline": "New Swiss Data Center Label to decarbonize nationwide digital infrastructure",
-        "url": "https://www.hpe.com/us/en/newsroom/press-release/2020/01/new-swiss-data-center-label-to-decarbonize-nationwide-digital-infrastructure.html",
-        "publishedDate": "2023-02-27T02:53:27.000Z",
-        "affectedCities": [],
-        "highlights": [
-            "The Swiss Data Center Efficiency Label is awarded for excellence in energy efficiency and environmental sustainability of data center infrastructures and their containing IT infrastructures. This includes three key components. The data center infrastructure award criteria apply to the entire energy flow, from ingest to output, including recycling capabilities of output energy (such as using thermal discharge to heat other buildings). The IT infrastructure award criteria apply to energy-efficient IT technology and effective IT usage. Depending on their compliance with the efficiency criteria, data centers can be awarded with a gold, silver or bronze label."
-        ]
-    },
-    {
         "articleId": 2,
-        "headline": "AI To Go Nuclear? Data Center Deals Say It's Inevitable - Slashdot",
-        "url": "https://hardware.slashdot.org/story/24/08/26/0045256/ai-to-go-nuclear-data-center-deals-say-its-inevitable?utm_source=rss1.0mainlinkanon&utm_medium=feed",
-        "publishedDate": "2024-08-25T00:00:00.000Z",
-        "affectedCities": [],
+        "headline": "OpenAI and Softbank are starting a $500 billion AI data center company",
+        "url": "https://www.theverge.com/2025/1/21/24348816/openai-softbank-ai-data-center-stargate-project",
+        "Image_url": "https://duet-cdn.vox-cdn.com/thumbor/0x0:1613x1058/750x500/filters:focal(807x529:808x530):format(webp)/cdn.vox-cdn.com/uploads/chorus_asset/file/25840970/videoframe_1799876.jpg",
+        "publishedDate": "2025-01-21T14:45:00-08:00",
+        "affectedCities": [
+          "Abilene, TX",
+          "Dallas-Fort Worth, TX",
+          "Austin, TX", 
+          "San Antonio, TX",
+          "Houston, TX"
+        ],
         "highlights": [
-            "To build the massive datacenters generative AI requires, major companies like Amazon and Microsoft \"are going nuclear,\" reports CIO magazine .  Earlier this year, AWS paid $650 million to purchase Talen Energy's Cumulus Data Assets, a 960-megawatt nuclear-powered data center on site at Talen's Susquehanna, Pennsylvania, nuclear plant, with additional data centers planned — pending approval by the Nuclear Regulatory Agency... In addition to its purchase of the Cumulus data center, AWS will have access to nuclear energy as part of a 10-year Power Purchase Agreement (PPA) from the Susquehanna site.   Last year, Constellation signed a deal giving Microsoft the rights to receive up to 35% of its power from nuclear sources in addition to its existing solar and wind purchases from Constellation for Microsoft's Boydton, Va., data center. Microsoft has also signed a nuclear carbon credits deal with Ontario Power Generation for its operations in Canada. "
+          "$500 billion investment planned over next 4 years",
+          "Initial construction underway in Abilene at Lancium Clean Campus",
+          "Partnership between OpenAI, Softbank, Oracle, MGX as initial equity funders",
+          "Microsoft, NVIDIA, Oracle, Arm named as tech partners",
+          "First phase includes 10 buildings in Abilene, expanding to 20",
+          "Each building approximately 500,000 square feet",
+          "Additional Texas metro areas under evaluation for expansion"
         ]
-    },
-    {
-        "articleId": 3,
-        "headline": "Digital Infrastructure",
-        "url": "https://digitalinfrastructure.substack.com/p/digital-infrastructure",
-        "Image_url": "https://substackcdn.com/image/fetch/f_auto,q_auto:best,fl_progressive:steep/https%3A%2F%2Fdigitalinfrastructure.substack.com%2Ftwitter%2Fsubscribe-card.jpg%3Fv%3D1849013586%26version%3D9",
-        "publishedDate": "2023-01-27T18:57:05.000Z",
-        "affectedCities": [],
-        "highlights": [
-            "\"The digital infrastructure is the backbone of the digital age, for as the strength of the backbone, so too is the strength of the body. \" -AI (pretending to be Aristotle) www.youtube.com/@digitalinfrastructure365 #digitalinfrastructure #datacenter #edgedatacenter #hyperscale #criticalinfrastructure #digitalresilience #openinfrastructure #energygrid"
-        ]
-    },
-    {
-        "articleId": 4,
-        "headline": "Tech Xplore - Technology and Engineering news",
-        "url": "https://techxplore.com/tags/datacenter/",
-        "Image_url": "https://techxplore.com/pic/logo_small.png",
-        "publishedDate": "2020-09-14T00:00:00.000Z",
-        "affectedCities": [],
-        "highlights": [
-            "Microsoft tests hydrogen fuel cells for backup power at datacenters  In a worldwide first that could jumpstart a clean energy economy built around the most abundant element in the universe, hydrogen fuel cells have powered a row of datacenter servers for 48 consecutive hours, Microsoft announced ..."
-        ]
-    },
-    {
-        "articleId": 5,
-        "headline": "Latest Articles and Reviews on AnandTech",
-        "url": "https://www.anandtech.com/tag/datacenter",
-        "publishedDate": "2024-04-04T00:00:00.000Z",
-        "affectedCities": [],
-        "highlights": [
-            "Within Google, Axion is aimed at a wide variety of...   Western Digital, or its enterprise arm HGST to be exact, has today announced that it will be acquiring all-flash array provider Skyera. The terms of the transaction have not... "
-        ]
-    },
-    {
-        "articleId": 6,
+       },
+       {
+        "articleId": 2,
         "headline": "Top Five Data Center Stories: Week of January 13",
-        "url": "https://www.datacenterknowledge.com/infrastructure/top-five-data-center-stories-week-of-january-13",
-        "Image_url": "https://eu-images.contentstack.com/v3/assets/blt8eb3cdfc1fce5194/bltaf53da59fd067277/66210c043dac5e7b8ea1467a/Digital-Realty-Chessington-DC-UK.jpg?disable=upscale&width=1200&height=630&fit=crop",
-        "publishedDate": "2024-06-03T08:14:21.000Z",
+        "url": "https://www.datacenterknowledge.com/top-five-stories-january-13-2025",
+        "Image_url": "https://eu-images.contentstack.com/v3/assets/blt8eb3cdfc1fce5194/bltaf53da59fd067277/66210c043dac5e7b8ea1467a/Digital-Realty-Chessington-DC-UK.jpg?width=1280&auto=webp&quality=95&format=jpg&disable=upscale",
+        "publishedDate": "2025-01-14T00:00:00Z",
         "affectedCities": [],
         "highlights": [
-            "Microsoft Wants to Patent an Underwater Data Center Reef - Application to patent an Artificial Reef Datacenter will add it to the list of applications describing other elements of the underwater cloud, such as a cooling system that uses the ocean as a giant heat exchanger and intrusion detection for submerged data centers. Switch Gets All A’s, Four Providers Fail Green Data Center Test by Greenpeace - Greenpeace publishes its Clicking Clean report periodically in an effort to pressure the biggest data center operators and users – companies responsible for building much of the internet infrastructure – to source renewable energy for their facilities, invest in renewable energy generation, and use their influence as big energy customers with utilities and regulators to bring more renewable energy on the grid and make it easier to obtain. Equinix Eyeing Expansion in Emerging Markets with Cloud Giants - In the near future, we may see the Redwood City, California-based data center provider help one or more web giants, such as Amazon Web Services, Microsoft Azure, or Google Cloud Platform, bring big chunks of cloud data center capacity to emerging markets. Microsoft to Reorganize Partner, Service Teams, Promises No Job Cuts - The moves affect Microsoft’s sales, partner and services teams under the Worldwide Commercial Business group. Stay current on data center industry news by subscribing to our RSS feed and daily e-mail updates, or by following us on Twitter or Facebook or join our LinkedIn Group – Data Center Knowledge"
+            "DOE advocates 'all of the above' strategy for data center energy challenges",
+            "Nuclear-powered data centers gaining attention",
+            "Department of Energy emphasizes portfolio approach to solving data center energy needs",
+            "Discussion of Small Modular Reactors (SMRs) for data center power",
+            "Ongoing exploration of sustainable energy solutions for growing data center demand"
         ]
-    },
-    {
+     },
+     {
+        "articleId": 3,
+        "headline": "Driving the Data Center Boom in Central Texas",
+        "url": "https://www.dpr.com/media/blog/driving-the-data-center-boom-in-central-texas",
+        "Image_url": "https://img.dpr.com/content/assets/Stream-December-2024-22.jpg?auto=compress%2Cformat&crop=focalpoint&fit=crop&fp-x=0.6323&fp-y=0.4338&h=810&q=80&w=1440&s=65132dd390958df8573d94171ea58e5c",
+        "publishedDate": "2025-01-24T00:00:00Z",
+        "affectedCities": [
+            "San Antonio, TX"
+        ],
+        "highlights": [
+            "350,000 sq. ft. mission-critical data center under construction",
+            "40 MW facility with phased turnover beginning May 2025",
+            "Estimated 3,871 MW of data center projects under construction in first half of 2024",
+            "69.2% increase in data center construction from previous year",
+            "Prefabrication approach saving $1.8 million in electrical worker hours"
+        ]
+     },
+     {
+        "articleId": 4,
+        "headline": "Data centers are booming in Texas. What does that mean for the grid?",
+        "url": "https://www.texastribune.org/2025/01/24/texas-data-center-boom-grid/",
+        "Image_url": "https://thumbnails.texastribune.org/msV7j3MMnO0FBKPDlEVpcJRmaXo=/1000x670/smart/filters:format(webp):quality(75)/https://static.texastribune.org/media/files/e91bedfac5b14a094fdfe8d9994f3c64/Data%20Center%20Cables%20REUTERS.jpg",
+        "publishedDate": "2025-01-24T05:00:00Z", 
+        "affectedCities": [
+            "Dallas-Fort Worth",
+            "Austin",
+            "San Antonio",
+            "Abilene"
+        ],
+        "highlights": [
+            "Texas grid operator predicts power demand will nearly double by 2030",
+            "279 data centers in Texas as of September 2024",
+            "Large users expected to grow 60% this year",
+            "Data centers projected to consume 11-12% of U.S. power demand by 2030",
+            "Stargate venture to invest $500 billion in AI infrastructure",
+            "10 data centers under construction in Texas with 10 more planned"
+        ]
+     },
+     {
+        "articleId": 5,
+        "headline": "DFW becomes hot spot for 'data centers' as the AI race heats up",
+        "url": "https://www.nbcdfw.com/news/local/dfw-becomes-hot-spot-for-data-centers-as-the-ai-race-heats-up/3742036/",
+        "Image_url": "https://media.nbcdfw.com/2025/01/edged-dallas.png?fit=1885%2C853&quality=85&strip=all&w=975&h=548&crop=1",
+        "publishedDate": "2025-01-16T08:56:00Z",
+        "affectedCities": [
+            "Irving, TX", 
+            "Dallas-Fort Worth, TX",
+            "Red Oak, TX"
+        ],
+        "highlights": [
+            "President Biden signs executive order supporting data center development",
+            "DFW ranks second-largest data center market in North America",
+            "Edged Dallas opens 168,610-square-foot sustainable data center in Irving",
+            "$1 billion data center campus under construction in Red Oak",
+            "U.S. data center power demand could nearly triple in next three years",
+            "Estimated to potentially consume up to 12% of country's electricity"
+        ]
+     },
+     {
+        "articleId": 6,
+        "headline": "Stargate's first data center is underway in Texas",
+        "url": "https://www.businessinsider.com/texas-stargate-data-center-build-cost-2025-1",
+        "Image_url": "https://i.insider.com/67905e16ae09223df2baea63?width=1000&format=jpeg&auto=webp",
+
+        "publishedDate": "2025-01-24T17:37:00-08:00",
+        "affectedCities": [
+            "Abilene, TX"
+        ],
+        "highlights": [
+            "$500 billion AI project announced by President Trump",
+            "First data center campus under construction in Abilene, Texas",
+            "Two 500,000 sq ft buildings currently being built",
+            "Estimated $1.1 billion construction cost",
+            "Joint venture between Oracle, OpenAI, and SoftBank"
+        ]
+     },
+     {
         "articleId": 7,
-        "headline": "Datacenter - Press Release News",
-        "url": "https://www.prlog.org/news/tag/datacenter/",
-        "publishedDate": "2024-06-18T00:00:00.000Z",
-        "affectedCities": [],
+        "headline": "Lincoln announces 131-acre data center campus in Dallas, Texas",
+        "url": "https://www.datacenterdynamics.com/en/news/lincoln-announces-131-acre-data-center-campus-in-dallas-texas/",
+        "Image_url": "https://media.datacenterdynamics.com/media/images/Lincoln_Rackhouse_Atlanta_Data_Center.width-358.jpg",
+        "publishedDate": "2025-01-10T00:00:00Z",
+        "affectedCities": [
+            "Dallas, TX",
+            "Red Oak, TX"
+        ],
         "highlights": [
-            "Filter News Show All Results News By Country None Found News By Tag Datacenter   Public Company News Business Press Releases Latest News &gt; Datacenter &gt; Page 1 Datacenter Press Releases Topics Locations Industries Dates   India business delegation to visit Oman By DC10G Dr.Ravi Sharma invite here, as a delegate in List Of Delegates, IT &amp; ITC.   Pumtrix Technologies Launches to Charter a Course for Change and Innovation in Digital Infrastructure By Pumtrix Technologies A new consultancy has today launched with the vision to disrupt norms and drive innovation in the digital infrastructure industry.   Prometheus Electric Unveils New Webpage on Electrical Panel Repair and Replacement "
+            "131-acre data center campus planned",
+            "Up to 540MW of total power across 800,000 sq ft",
+            "Four-building campus with 96MW per building",
+            "First phase begins Q1 2025 with 2MW IT capacity",
+            "Collaboration between Lincoln Property Company, Gigabit Fiber, and Tradition Holdings"
         ]
-    },
-    {
+     },
+     {
         "articleId": 8,
-        "headline": "Press Release Distribution and Management",
-        "url": "https://www.globenewswire.com/en/search/tag/%2523datacenter",
-        "publishedDate": "2024-02-29T09:00:00.000Z",
-        "affectedCities": [],
+        "headline": "DataBank Announces New 480MW North Texas Data Center Campus Featuring Eight Two‑Story Data Centers",
+        "url": "https://dallasinnovates.com/databank-announces-new-480mw-north-texas-data-center-campus-featuring-eight-two-story-data-centers/",
+        "Image_url": "https://s24806.pcdn.co/wp-content/uploads/2024/09/Data_iStock-1329831663-e1726012844186.jpg",
+        "publishedDate": "2024-09-10T00:00:00Z",
+        "affectedCities": [
+            "Red Oak, TX",
+            "Dallas, TX"
+        ],
         "highlights": [
-            "DENVER, Nov. 17, 2022 (GLOBE NEWSWIRE) -- Cologix, North America’s leading network-neutral interconnection and hyperscale edge data center company, today announced the launch of Cologix Access...  GTT Grows Partnership With Cologix to Expand Connectivity Into Latin America  DENVER and McLean, Va., Oct. 04, 2022 (GLOBE NEWSWIRE) -- GTT Communications, Inc., a leading global provider of managed network and security services to multinational organizations, has announced...  Hexatronic förvärvar datacenter-specialisten Impact Data Solutions  Pressmeddelande 26 september, 2022Göteborg, Sverige Hexatronic förvärvar datacenter-specialisten Impact Data Solutions Hexatronic Group AB (publ) (“Hexatronic”) har idag,..."
+            "480MW data center campus on 292 acres",
+            "Eight two-story data centers planned",
+            "First phase to be operational Q2 2026",
+            "400MW substation with potential 240MW critical IT power",
+            "Third new campus announced in past 12 months",
+            "Designed to meet growing AI and cloud application demand"
         ]
-    },
-    {
+     },
+     {
         "articleId": 9,
-        "headline": "Press Release Distribution and Management",
-        "url": "https://www.globenewswire.com/en/search/tag/data%2520center%2520acquisition",
-        "publishedDate": "2018-04-10T14:45:00.000Z",
-        "affectedCities": [],
+        "headline": "Texas Data Center Markets Are Booming",
+        "url": "https://www.trgdatacenters.com/resource/texas-data-center-markets-are-booming/",
+        "Image_url": "https://www.trgdatacenters.com/wp-content/uploads/2018/12/usa-3808026_1920-1920x1080.jpg.webp",
+        "publishedDate": "2025-01-01T00:00:00Z",
+        "affectedCities": [
+            "Austin, TX",
+            "Dallas, TX", 
+            "Houston, TX",
+            "San Antonio, TX"
+        ],
         "highlights": [
-            "state-of-the-art data centers, announced today that is has acquired"
+            "Texas ranks second in U.S. data center inventory",
+            "Energy costs six times lower than California",
+            "70% of Texas energy from wind and solar in early 2025",
+            "83% of electricity from non-carbon-emitting sources",
+            "Low energy prices and tax incentives driving data center growth",
+            "Continued investment in grid infrastructure and renewable energy"
         ]
-    },
-    {
+     },
+     {
         "articleId": 10,
-        "headline": "Computer Science News | Technology News | Computer Science Technology | Computer Sciences ( ... sorted: popular/1d)",
-        "url": "https://techxplore.com/computer-sciences-news/sort/popular/1d/",
-        "Image_url": "https://techxplore.com/pic/logo_small.png",
-        "publishedDate": "2024-06-01T00:00:00.000Z",
-        "affectedCities": [],
+        "headline": "Trump's big AI goals start small: 57 jobs at a Texas data center",
+        "url": "https://www.dallasnews.com/business/technology/2025/01/25/trumps-big-ai-goals-start-small-57-jobs-at-a-texas-data-center/",
+        "Image_url": "https://dmn-dallas-news-prod.cdn.arcpublishing.com/resizer/v2/HDUOHVGLEPXXBKWPEU4IO7HIQA.jpg?auth=8ec795acf6c4392d243afffeef91a196d2b99d762b5b6bf06ef8fcedbf5c6e89&height=553&width=830&smart=true&quality=80",
+        "publishedDate": "2025-01-25T06:00:00Z",
+        "affectedCities": [
+            "Abilene, TX"
+        ],
         "highlights": [
-            "New graph processing technology demonstrates significant speed advantages over existing solutions  The need for efficient and fast data processing tools in industries that manage large-scale graph data has led to the development of GraphCP, a technology that dramatically improves processing speeds."
+            "Stargate venture requires minimum of 57 full-time jobs at Abilene site",
+            "875 acres reserved for data center construction",
+            "First phase of project is 200-megawatt data center",
+            "Plans to expand to 1.2 gigawatts of power",
+            "10 buildings currently under construction, expected to expand to 20",
+            "Each building will be 500,000 square feet"
         ]
-    }
+     }
 ];
 
 export default articles;
