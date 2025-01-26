@@ -1,19 +1,21 @@
-import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./Home.tsx";
-import Portfolio from "./Portfolio.tsx";
-import Navbar from "./components/ui/Navbar.tsx";
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Layout from './components/Layout';
+import Home from './pages/Home';
+import Portfolio from './pages/Portfolio';
 
-function App() {
+const App: React.FC = () => {
   return (
-    <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/" element={<Portfolio />} />
-      </Routes>
-    </BrowserRouter>
+    <Router>
+      <Layout>
+        <Routes>
+          <Route path="/home" element={<Home />} />
+          <Route path="/portfolio" element={<Portfolio />} />
+          {/* Add more routes as needed */}
+        </Routes>
+      </Layout>
+    </Router>
   );
-}
+};
 
 export default App;
