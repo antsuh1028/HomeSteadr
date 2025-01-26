@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button"
 import getArticles from "@/utils/getArticles"
 import newsIcon from '../assets/newsicon.png';
 import articles from "@/assets/StockArticles";
+import { CityResult, DatafinitiResponse } from '../../../homesteadr-backend/types/types';
 
 interface Property {
 	pictureUrl: string | undefined,
@@ -94,6 +95,38 @@ export default function Home() {
   const [showMetrics, setShowMetrics] = useState(false)
   const [newsList, setNewsList] = useState<NewsArticle[]>([])
   const [propertyList, setPropertyList] = useState<Property[]>([])
+
+
+  const [selectedCities, setSelectedCities] = useState<CityResult[]>([]);
+
+  useEffect(() => {
+    const initMarkers = async () => {
+      try {
+        const cities = articles[0].affectedCities;
+        // POST {baseUrl}/api/datafiniti
+        const response = await fetch('http://localhost:3005/api/datafiniti', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ cities: cities }), 
+        });
+        const data = await response.json() as DatafinitiResponse;
+        console.log(data);
+        setSelectedCities(data.results);
+      } catch (error) {
+        console.error('error in home init: ', error);
+      }
+    };
+    initMarkers();
+  }, []);
+
+
+  // // first indexed number represents city index
+  // // second indexed number represents address index
+  // selectedCities[0].city
+  // selectedCities[0].data[0].address
+  // selectedCities[0].data[0].squareFeet
 
   const refreshMap = useCallback(() => {
     setMapKey((prevKey) => prevKey + 1)

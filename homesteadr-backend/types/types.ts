@@ -1,6 +1,6 @@
 // baseUrl is probably: http://localhost:3005
 
-// GET {baseUrl}/api/articles
+// GET {baseUrl}/api/articles 
 // AND
 // POST {baseUrl}/api/customarticles
 export type ArticlesResponse = {
