@@ -1,21 +1,26 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Layout from './components/Layout';
-import Home from './pages/Home';
-import Portfolio from './pages/Portfolio';
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home.tsx";
+import Portfolio from "./pages/Portfolio.tsx";
+import Navbar from "./components/Navbar.tsx";
+import LoginPage from "./pages/LoginPage.tsx";
+import { AuthProvider } from "./contexts/AuthContext.tsx";
+import ExampleUser from "./pages/ExampleUser.tsx";
 
-const App: React.FC = () => {
-  return (
-    <Router>
-      <Layout>
-        <Routes>
-          <Route path="/home" element={<Home />} />
-          <Route path="/portfolio" element={<Portfolio />} />
-          {/* Add more routes as needed */}
-        </Routes>
-      </Layout>
-    </Router>
-  );
-};
+function App() {
+    return (
+        <AuthProvider>
+            <BrowserRouter>
+                <Navbar />
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/login" element={<LoginPage />} />
+                    <Route path="/portfolio" element={<Portfolio />} />
+                    <Route path="/example" element={<ExampleUser />} />
+                </Routes>
+            </BrowserRouter>
+        </AuthProvider>
+    );
+}
 
 export default App;
