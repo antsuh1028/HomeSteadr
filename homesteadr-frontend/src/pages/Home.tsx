@@ -11,6 +11,7 @@ import newsIcon from '../assets/newsicon.png';
 import articles from "@/assets/StockArticles";
 import { CityResult, DatafinitiResponse } from '../../../homesteadr-backend/types/types';
 import { properties1,properties10,properties2, properties3,properties5,properties6,properties8,properties9} from "@/assets/properties"
+import extractMarkers from "@/utils/getMarkers";
 
 interface Property {
 	pictureUrl: string | undefined,
@@ -23,6 +24,14 @@ interface Property {
 },
 type: string | undefined,  // SingleFamilyResidence, 
 }
+
+type Marker = {
+  position: {
+    lat: number;
+    lng: number;
+  };
+  label: string;
+};
 
 const propertiesArray: CityResult[][] = [
   properties1 || {},
@@ -40,23 +49,13 @@ console.log(properties1);
 
 
 
+
+
 const mapCenter = {
   lat: 33.6213,
   lng: -117.9278,
 }
 
-const markers = [
-  { position: { lat: 33.6213, lng: -117.9278 }, label: "$3.98M" },
-  { position: { lat: 33.6157, lng: -117.9331 }, label: "$2.85M" },
-  { position: { lat: 33.6189, lng: -117.9245 }, label: "$4.2M" },
-  { position: { lat: 33.6278, lng: -117.9312 }, label: "$3.15M" },
-  { position: { lat: 33.6145, lng: -117.9289 }, label: "$2.95M" },
-  { position: { lat: 33.6234, lng: -117.9256 }, label: "$3.75M" },
-  { position: { lat: 33.6198, lng: -117.9367 }, label: "$3.45M" },
-  { position: { lat: 33.6167, lng: -117.9234 }, label: "$2.65M" },
-  { position: { lat: 33.6289, lng: -117.9278 }, label: "$4.5M" },
-  { position: { lat: 33.6123, lng: -117.9345 }, label: "$3.25M" }
- ];
  
 
 interface NewsArticle {
@@ -77,31 +76,19 @@ export default function Home() {
   const [propertyList, setPropertyList] = useState<Property[]>([])
   const [selectedArticle, setSelectedArticle] = useState(0)
   const [selectedCities, setSelectedCities] = useState<CityResult[]>([]);
+  const [markers, setMarkers] = useState<Marker[]>([])
+
+  useEffect(() => {
+    if (selectedCities?.length) {
+      const newMarkers = extractMarkers(selectedCities);
+      setMarkers(newMarkers);
+    }
+  }, [selectedCities]);
 
 
 
   useEffect(() => {
     setSelectedCities(propertiesArray[selectedArticle]);
-
-    // const initMarkers = async () => {
-    //   try {
-    //     const cities = articles[selectedArticle].affectedCities;
-    //     // POST {baseUrl}/api/datafiniti
-    //     const response = await fetch('http://localhost:3005/api/datafiniti', {
-    //       method: 'POST',
-    //       headers: {
-    //         'Content-Type': 'application/json',
-    //       },
-    //       body: JSON.stringify({ cities: cities }), 
-    //     });
-    //     const data = await response.json() as DatafinitiResponse;
-    //     console.log(data);
-    //     setSelectedCities(data.results);
-    //   } catch (error) {
-    //     console.error('error in home init: ', error);
-    //   }
-    // };
-    // initMarkers();
   }, [selectedArticle]);
 
   useEffect(() => {
@@ -134,22 +121,20 @@ export default function Home() {
     setSelectedHouse(property)
   }
 
-  // useEffect(() => {
-  //   getArticles()
-  //     .then(data => {setNewsList(data.newsArticles);})
-  //     .catch(err => console.error(err));
-  // }, []);
-
-  // useEffect(() => {
-  //   console.log(newsList);
-  // }, [newsList]);
-
 
   return (
     <div className="flex h-screen overflow-hidden">
       {/* Map Section */}
       <div className="w-3/5 relative h-screen">
-        <MapView key={mapKey} center={mapCenter} zoom={13} markers={markers} setShowMetrics={setShowMetrics} />
+      <MapView 
+          key={mapKey} 
+          center={mapCenter} 
+          zoom={13} 
+          markers={markers} 
+          allProperties={propertyList} 
+          setSelectedHouse={(property: Property) => setSelectedHouse(property)}
+          setShowMetrics={setShowMetrics} 
+        />
         <div className="absolute top-4 right-4 z-10">
           <Button onClick={refreshMap} variant="secondary" size="sm">
             Refresh Map
@@ -241,7 +226,10 @@ export default function Home() {
                     <div
                       className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow overflow-hidden cursor-pointer h-full"
                       // onClick={() => window.open(article.url, "_blank")}
-                      onClick={() => {setSelectedArticle(index)}}
+                      onClick={() => {
+                        setSelectedArticle(index);
+                        setShowNewsModal(false);
+                      }}
                     >
                       <img src={article?.Image_url ?? newsIcon} alt={article.headline} className="w-full h-40 object-cover" />
                       <div className="p-4 flex flex-col h-[calc(100%-10rem)]">
