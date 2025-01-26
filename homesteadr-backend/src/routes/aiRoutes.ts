@@ -302,8 +302,21 @@ router.get("/neighborhood-risk", async (req, res) => {
     }
 });
 
-const DATAFINITI_API_KEY = process.env.DATAFINITI_API_KEY as string | undefined;
-if (!DATAFINITI_API_KEY) throw Error("no datafinity key");
+let i = 0;
+const datafinitiApiKeyJson = process.env.DATAFINITI_API_KEY as string | undefined;
+if (!datafinitiApiKeyJson) {
+    throw new Error("No Datafiniti API key provided");
+}
+let datafinitiApiKeys: string[];
+try {
+    const parsed = JSON.parse(datafinitiApiKeyJson);
+    if (!Array.isArray(parsed.keys)) {
+        throw new Error();
+    }
+    datafinitiApiKeys = parsed.keys;
+} catch {
+    throw new Error("Invalid Datafiniti API key format");
+}
 const format = "JSON";
 // const query = "country:US";
 const num_records = 5;
@@ -451,12 +464,18 @@ interface TransformedApiResponse {
   }
   
 const transformApiResponse = async (apiResponse: any): Promise<PropertyData[]>  => {
+    // console.log("API Response:", apiResponse);
+
+    if (!apiResponse?.records) {
+        console.error("No records found in API response");
+        return [];
+    }
 
     const transformedRecords: PropertyData[] = await Promise.all(apiResponse.records.map(async (property: any)=> {
         let pictureUrl;
         try {
             const { metadataUrl, imageUrl } = getGoogleStreetViewImage(property.address);
-            console.log("google maps stuff:", { metadataUrl, imageUrl });
+            // console.log("google maps stuff:", { metadataUrl, imageUrl });
 
             const metadataResponse = await fetch(metadataUrl);
             type MetadataType = {
@@ -468,14 +487,14 @@ const transformApiResponse = async (apiResponse: any): Promise<PropertyData[]>  
             };
             const metadata: MetadataType = await metadataResponse.json();
 
-            console.log("Metadata response:", metadata);
+            // console.log("Metadata response:", metadata);
 
             if (metadata.status === "OK") {
                 pictureUrl = imageUrl;
             } else {
                 pictureUrl = getMapboxImage(property.latitude, property.longitude);
             }
-            console.log("result img url:", pictureUrl); //TESTING
+            // console.log("result img url:", pictureUrl); //TESTING
         } catch (error) {
             console.error("Error fetching street view:", error);
             pictureUrl = undefined;
@@ -521,13 +540,13 @@ router.post("/datafiniti", async (req, res) => {
                     {
                         method: "POST",
                         headers: {
-                            Authorization: `Bearer ${DATAFINITI_API_KEY}`,
+                            Authorization: `Bearer ${datafinitiApiKeys[i % datafinitiApiKeys.length]}`,
                             "Content-Type": "application/json",
                         },
                         body: JSON.stringify(requestBody),
                     }
                 );
-
+                i++; 
                 const data = await response.json();
 
                 const transformedData= await transformApiResponse(data);
