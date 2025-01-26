@@ -1,7 +1,7 @@
 "use client"
 
 import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api"
-import { useMemo } from "react"
+import { useMemo, useCallback } from "react"
 import { Button } from "../button"
 
 const mapOptions = {
@@ -18,38 +18,65 @@ interface MapViewProps {
     label: string
   }>
   setShowMetrics: (show: boolean) => void
-  
 }
 
 export function MapView({ center, zoom, markers, setShowMetrics }: MapViewProps) {
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY || "",
+    googleMapsApiKey: "AIzaSyCmG5duD8Zc43a_LihR7IwUI0KnsBS_F74",
   })
 
   const mapCenter = useMemo(() => center, [center])
+
+  const onLoad = useCallback(
+    (map: google.maps.Map) => {
+      console.log("Map loaded:", map)
+      // Fit bounds to markers if needed
+      if (markers.length > 0) {
+        const bounds = new google.maps.LatLngBounds()
+        markers.forEach(({ position }) => bounds.extend(position))
+        map.fitBounds(bounds)
+      }
+    },
+    [markers],
+  )
 
   if (!isLoaded) {
     return <div className="h-full w-full bg-muted animate-pulse" />
   }
 
   return (
-    <div className="relative w-full h-full ">
-      <GoogleMap options={mapOptions} zoom={zoom} center={mapCenter} mapContainerClassName="w-full h-full">
+    <div className="relative w-full h-full">
+      <GoogleMap
+        options={mapOptions}
+        zoom={zoom}
+        center={mapCenter}
+        mapContainerClassName="w-full h-full"
+        onLoad={onLoad}
+      >
         {markers.map((marker, index) => (
           <Marker
-            key={index}
+            key={`marker-${index}`}
             position={marker.position}
+            icon={{
+              path: google.maps.SymbolPath.CIRCLE,
+              scale: 10,
+              fillColor: "#3B82F6",
+              fillOpacity: 1,
+              strokeWeight: 2,
+              strokeColor: "#FFFFFF",
+            }}
             label={{
               text: marker.label,
-              className: "font-bold text-sm",
+              color: "#FFFFFF",
+              fontSize: "14px",
+              fontWeight: "bold",
+              className: "marker-label",
             }}
           />
         ))}
       </GoogleMap>
       <div className="absolute bottom-4 right-4">
-      <Button onClick={() => setShowMetrics(true)}>
-        Show Metrics
-        </Button>
+        <Button onClick={() => setShowMetrics(true)}>Show Metrics</Button>
       </div>
     </div>
   )

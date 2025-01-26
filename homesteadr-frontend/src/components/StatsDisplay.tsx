@@ -13,7 +13,7 @@ interface Stat {
   
   export function StatsDisplay() {
     return (
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {stats.map((stat) => (
           <div key={stat.label} className="rounded-lg border bg-card p-6 shadow-sm">
             <p className="text-sm text-gray-400">{stat.label}</p>
