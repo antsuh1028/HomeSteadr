@@ -35,10 +35,13 @@ interface Article {
        {
         "articleId": 2,
         "headline": "Top Five Data Center Stories: Week of January 13",
-        "url": "https://www.datacenterknowledge.com/top-five-stories-january-13-2025",
+        "url": "https://www.datacenterknowledge.com/infrastructure/top-five-data-center-stories-week-of-january-13",
         "Image_url": "https://eu-images.contentstack.com/v3/assets/blt8eb3cdfc1fce5194/bltaf53da59fd067277/66210c043dac5e7b8ea1467a/Digital-Realty-Chessington-DC-UK.jpg?width=1280&auto=webp&quality=95&format=jpg&disable=upscale",
         "publishedDate": "2025-01-14T00:00:00Z",
-        "affectedCities": [],
+        "affectedCities": [
+            "Houston, TX",
+            "Austin, TX"
+        ],
         "highlights": [
             "DOE advocates 'all of the above' strategy for data center energy challenges",
             "Nuclear-powered data centers gaining attention",
@@ -54,7 +57,8 @@ interface Article {
         "Image_url": "https://img.dpr.com/content/assets/Stream-December-2024-22.jpg?auto=compress%2Cformat&crop=focalpoint&fit=crop&fp-x=0.6323&fp-y=0.4338&h=810&q=80&w=1440&s=65132dd390958df8573d94171ea58e5c",
         "publishedDate": "2025-01-24T00:00:00Z",
         "affectedCities": [
-            "San Antonio, TX"
+            "San Antonio, TX",
+            "Houston, TX"
         ],
         "highlights": [
             "350,000 sq. ft. mission-critical data center under construction",
@@ -113,7 +117,8 @@ interface Article {
 
         "publishedDate": "2025-01-24T17:37:00-08:00",
         "affectedCities": [
-            "Abilene, TX"
+            "Abilene, TX",
+            "Dallas, TX"
         ],
         "highlights": [
             "$500 billion AI project announced by President Trump",
