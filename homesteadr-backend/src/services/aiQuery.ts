@@ -16,11 +16,13 @@ const groq = new Groq({
 
 const exa = new Exa(VITE_EXA_API_KEY);
 
-export const queryGroq = async (query: string) => {
+export const queryGroq = async (query: string, model:string="llama3-70b-8192", temperature: number = 1, json:boolean = false) => {
     try {
         const groqCompletion = await groq.chat.completions.create({
             messages: [{ role: "user", content: query }],
-            model: "llama3-70b-8192",
+            model,
+            temperature,
+            response_format: { type: json ? 'json_object' : 'text' },
         });
 
         return groqCompletion.choices[0]?.message?.content;
@@ -49,7 +51,7 @@ export const exaSearch = async(query: string, options: exaOptions = defaultExaOp
             numResults: finalOptions.numResults,
             startPublishedDate: startPublishedDate,
             endPublishedDate: endPublishedDate,
-            text: true,
+            highlights: true,
         });
         return exaSearch;
     } catch (error) {
