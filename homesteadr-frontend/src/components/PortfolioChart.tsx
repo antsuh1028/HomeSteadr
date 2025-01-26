@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   LineChart,
   Line,
@@ -6,13 +6,11 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  ResponsiveContainer
-} from 'recharts';
+  ResponsiveContainer,
+} from "recharts";
 
-import { ChartTooltipContent } from './ui/chart/ChartTooltipContent';
-import ChartContainer from './ui/chart/ChartContainer';
-
-
+import { ChartTooltipContent } from "./ui/chart/ChartTooltipContent";
+import ChartContainer from "./ui/chart/ChartContainer";
 
 const data = [
   { month: "Jan", value: 5000000 },
@@ -35,9 +33,22 @@ const PortfolioChart: React.FC = () => (
       className="h-full"
     >
       <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 20 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#333333" vertical={false} />
-          <XAxis dataKey="month" stroke="#666666" fontSize={12} tickLine={false} axisLine={{ stroke: "#333333" }} />
+        <LineChart
+          data={data}
+          margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
+        >
+          <CartesianGrid
+            strokeDasharray="3 3"
+            stroke="#333333"
+            vertical={false}
+          />
+          <XAxis
+            dataKey="month"
+            stroke="#666666"
+            fontSize={12}
+            tickLine={false}
+            axisLine={{ stroke: "#333333" }}
+          />
           <YAxis
             stroke="#666666"
             fontSize={12}
