@@ -1,6 +1,12 @@
 import express from "express";
 import { exaSearch, queryGroq } from "../services/aiQuery";
-import { ArticlesResponse, EnvironmentalRisks, CitiesRiskResponse } from '../../types/types';
+import {
+    ArticlesResponse,
+    EnvironmentalRisks,
+    CitiesRiskResponse,
+    PropertyData,
+    CityResult,
+} from "../../types/types";
 
 const router = express.Router();
 
@@ -13,10 +19,9 @@ router.get("/", async (req, res) => {
     res.json({ data: data });
 });
 
-
 router.get("/articles", async (req, res) => {
     // Get current date in YYYY-MM-DD format
-    const today = new Date().toISOString().split('T')[0];
+    const today = new Date().toISOString().split("T")[0];
 
     // Craft a search query that combines relevance and recency
     const searchQuery = `
@@ -27,6 +32,35 @@ router.get("/articles", async (req, res) => {
     `.trim();
 
     const exaResults = await exaSearch(searchQuery);
+    if (!exaResults || !exaResults.results) throw Error("no exa results");
+    const articlesResponse: ArticlesResponse = {
+        newsArticles: exaResults.results.map((result, index) => ({
+            articleId: index + 1, // or extract ID from result.id if needed
+            headline: result.title,
+            url: result.url,
+            Image_url: result.image,
+            publishedDate: result.publishedDate,
+            affectedCities: [], // You'll need to determine how to extract this
+            highlights: result.highlights,
+        })),
+    };
+
+    res.send(articlesResponse);
+});
+
+router.post("/customarticles", async (req, res) => {
+    const { query } = req.body();
+
+    if (!query || typeof query !== 'string') {
+        res.status(400).json({ error: "Invalid query parameter" });
+        return;
+    }
+    // Get current date in YYYY-MM-DD format
+    const today = new Date().toISOString().split("T")[0];
+
+
+
+    const exaResults = await exaSearch(query);
     if (!exaResults || !exaResults.results) throw Error("no exa results");
     const articlesResponse: ArticlesResponse = {
         newsArticles: exaResults.results.map((result, index) => ({
@@ -56,7 +90,6 @@ convo with nathan
 
 
 */
-
 
 const RISK_WEIGHTS = {
     flood: 0.3,
@@ -131,7 +164,7 @@ router.get("/neighborhood-risk", async (req, res) => {
         // analyze articles seperately
         const articleAnalyses: NewsAnalysis[] = await Promise.all(
             newsData.results.map(async (article, i) => {
-                console.log(`newdata ${i} highlights:`, article.highlights)
+                console.log(`newdata ${i} highlights:`, article.highlights);
                 const articleData = {
                     title: article.title,
                     text: article.highlights,
@@ -156,7 +189,7 @@ router.get("/neighborhood-risk", async (req, res) => {
                 const locationCompletion = await queryGroq(
                     locationExtractionPrompt,
                     "llama-3.3-70b-versatile",
-                    0.5, 
+                    0.5,
                     true
                 );
 
@@ -269,4 +302,249 @@ router.get("/neighborhood-risk", async (req, res) => {
     }
 });
 
+const DATAFINITI_API_KEY = process.env.DATAFINITI_API_KEY as string | undefined;
+if (!DATAFINITI_API_KEY) throw Error("no datafinity key");
+const format = "JSON";
+// const query = "country:US";
+const num_records = 5;
+const download = false;
+
+interface RequestOptions {
+    query: string;
+    format: "JSON";
+    num_records: number;
+    download: boolean;
+}
+
+const MAPBOX_API_KEY = process.env.MAPBOX_API_KEY as string | undefined;
+if (!MAPBOX_API_KEY) throw Error("no MAPBOX_API_KEY key");
+
+const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY as
+    | string
+    | undefined;
+if (!GOOGLE_MAPS_API_KEY) throw Error("no GOOGLE_MAPS_API_KEY key");
+
+const getMapboxImage = (lat: string, long: string) => {
+    return `https://api.mapbox.com/styles/v1/mapbox/satellite-v9/static/${long},${lat},17,0/400x300?access_token=${MAPBOX_API_KEY}`;
+};
+
+const getGoogleStreetViewImage = (address: string) => {
+    const encodedAddress = encodeURIComponent(address);
+    const metadataUrl = `https://maps.googleapis.com/maps/api/streetview/metadata?location=${encodedAddress}&key=${GOOGLE_MAPS_API_KEY}`;
+    const imageUrl = `https://maps.googleapis.com/maps/api/streetview?size=600x400&location=${encodedAddress}&key=${GOOGLE_MAPS_API_KEY}&fov=60&pitch=0`;
+
+    return { metadataUrl, imageUrl };
+};
+
+interface CitiesRequestBody {
+    cities: string[] | undefined;
+}
+
+// router.post("/datafiniti", async (req, res) => {
+//     try {
+//         const requestBody: RequestOptions = {
+//             query,
+//             format,
+//             num_records,
+//             download,
+//         };
+
+//         const response = await fetch(
+//             "https://api.datafiniti.co/v4/properties/search",
+//             {
+//                 method: "POST",
+//                 headers: {
+//                     Authorization: `Bearer ${DATAFINITI_API_KEY}`,
+//                     "Content-Type": "application/json",
+//                 },
+//                 body: JSON.stringify(requestBody),
+//             }
+//         );
+
+//         const data = await response.json();
+
+//         const transformApiResponse = async (apiResponse: any) => {
+//             const property = apiResponse.records[0];
+
+//             const { cities } = req.body as CitiesRequestBody;
+//             if (!Array.isArray(cities) || cities.length === 0) {
+//               return res.status(400).json({ success: false, error: "Please provide an array of cities" });
+//             }
+
+//             let pictureUrl;
+//             try {
+//                 const { metadataUrl, imageUrl } = getGoogleStreetViewImage(
+//                     property.address
+//                 );
+//                 console.log('google maps stuff:', {
+//                     metadataUrl: metadataUrl,
+//                     imageUrl: imageUrl
+//                 })
+
+//                 const metadataResponse = await fetch(metadataUrl);
+//                 type MetadataType = {
+//                     copyright: string,
+//                     date: string,
+//                     location: { lat: number, lng: number },
+//                     pano_id: string,
+//                     status: string
+//                   }
+//                 const metadata: MetadataType = await metadataResponse.json();
+
+//                 console.log('Metadata response:', metadata);
+
+//                 if (metadata.status === "OK") {
+//                     pictureUrl = imageUrl;
+//                 } else {
+//                     pictureUrl = getMapboxImage(
+//                         property.latitude,
+//                         property.longitude
+//                     );
+//                 }
+//                 console.log('result img url:', pictureUrl);//TESTING
+//             } catch (error) {
+//                 console.error("Error fetching street view:", error);
+//                 pictureUrl = undefined;
+//             }
+
+//             // Extract the required fields
+//             const transformedResponse = {
+//                 pictureUrl: pictureUrl,
+//                 price: property.mostRecentPriceAmount || 0,
+//                 squareFeet: property.lotSizeValue
+//                     ? property.lotSizeValue * 43560
+//                     : 0, // Converting acres to sq ft
+//                 address: property.address,
+//                 geolocation: {
+//                     lat: property.latitude,
+//                     long: property.longitude,
+//                 },
+//                 type:
+//                     property.categories?.find(
+//                         (cat: string) => cat === "SINGLE FAMILY RESIDENCE"
+//                     ) || undefined,
+//             };
+
+//             return transformedResponse;
+//         };
+//         const transformedData = await transformApiResponse(data);
+
+//         const picture = getMapboxImage(
+//             transformedData.geolocation.lat,
+//             transformedData.geolocation.long
+//         );
+
+//         res.status(response.status).json({
+//             before: data,
+//             after: transformedData,
+//             picture: picture,
+//         });
+//     } catch (error) {
+//         console.error("Error:", error);
+//         res.status(500).json({ error: "Internal Server Error" });
+//     }
+// });
+
+interface TransformedApiResponse {
+    // Define the structure that comes from transformApiResponse function
+    [key: string]: PropertyData;
+  }
+  
+const transformApiResponse = async (apiResponse: any): Promise<PropertyData[]>  => {
+
+    const transformedRecords: PropertyData[] = await Promise.all(apiResponse.records.map(async (property: any)=> {
+        let pictureUrl;
+        try {
+            const { metadataUrl, imageUrl } = getGoogleStreetViewImage(property.address);
+            console.log("google maps stuff:", { metadataUrl, imageUrl });
+
+            const metadataResponse = await fetch(metadataUrl);
+            type MetadataType = {
+                copyright: string;
+                date: string;
+                location: { lat: number; lng: number };
+                pano_id: string;
+                status: string;
+            };
+            const metadata: MetadataType = await metadataResponse.json();
+
+            console.log("Metadata response:", metadata);
+
+            if (metadata.status === "OK") {
+                pictureUrl = imageUrl;
+            } else {
+                pictureUrl = getMapboxImage(property.latitude, property.longitude);
+            }
+            console.log("result img url:", pictureUrl); //TESTING
+        } catch (error) {
+            console.error("Error fetching street view:", error);
+            pictureUrl = undefined;
+        }
+        const propertyData: PropertyData = {
+            pictureUrl: pictureUrl as string,
+            price: property.mostRecentPriceAmount || 0,
+            squareFeet: property.lotSizeValue ? property.lotSizeValue * 43560 : 0, // Converting acres to sq ft
+            address: property.address,
+            geolocation: {
+                lat: property.latitude,
+                long: property.longitude,
+            },
+            type: property.categories?.find((cat: string) => cat === "SINGLE FAMILY RESIDENCE") || undefined,
+        };
+        return propertyData;
+    }));
+
+    return transformedRecords;
+};
+
+router.post("/datafiniti", async (req, res) => {
+    try {
+        const { cities } = req.body as CitiesRequestBody;
+        if (!Array.isArray(cities) || cities.length === 0) {
+            res.status(400).json({
+                error: "Please provide an array of cities",
+            });
+            return;
+        }
+
+        const results : CityResult[]= await Promise.all(
+            cities.map(async (city) => {
+                const requestBody: RequestOptions = {
+                    query: `country:US AND city:${city}`,
+                    format,
+                    num_records,
+                    download,
+                };
+
+                const response = await fetch(
+                    "https://api.datafiniti.co/v4/properties/search",
+                    {
+                        method: "POST",
+                        headers: {
+                            Authorization: `Bearer ${DATAFINITI_API_KEY}`,
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(requestBody),
+                    }
+                );
+
+                const data = await response.json();
+
+                const transformedData= await transformApiResponse(data);
+
+                return {
+                    city,
+                    data: {
+                        ...transformedData,
+                    },
+                };
+            })
+        );
+        
+        res.status(200).json({ results });
+    } catch (error) {
+        console.error("Error:", error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+});
 export default router;
