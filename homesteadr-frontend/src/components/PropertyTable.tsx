@@ -23,19 +23,19 @@ export function PropertyTable({ data }: { data: Property[] }) {
           <table className="w-full">
             <thead>
               <tr className="border-b border-gray-700">
-                <th className="sticky top-0 bg-card text-left p-4 text-sm font-medium text-gray-400">
+                <th className="sticky top-0 bg-card text-left p-4 text-sm font-medium ">
                   Location
                 </th>
-                <th className="sticky top-0 bg-card text-left p-4 text-sm font-medium text-gray-400">
+                <th className="sticky top-0 bg-card text-left p-4 text-sm font-medium ">
                   Type
                 </th>
-                <th className="sticky top-0 bg-card text-right p-4 text-sm font-medium text-gray-400">
+                <th className="sticky top-0 bg-card text-right p-4 text-sm font-medium ">
                   Sq Ft
                 </th>
-                <th className="sticky top-0 bg-card text-right p-4 text-sm font-medium text-gray-400">
+                <th className="sticky top-0 bg-card text-right p-4 text-sm font-medium ">
                   Purchase Price
                 </th>
-                <th className="sticky top-0 bg-card text-right p-4 text-sm font-medium text-gray-400">
+                <th className="sticky top-0 bg-card text-right p-4 text-sm font-medium ">
                   Current Price
                 </th>
               </tr>
