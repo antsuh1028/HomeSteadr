@@ -15,8 +15,18 @@ router.get("/", async (req, res) => {
 
 
 router.get("/articles", async (req, res) => {
-    // input handled above
-    const exaResults = await exaSearch("something");
+    // Get current date in YYYY-MM-DD format
+    const today = new Date().toISOString().split('T')[0];
+
+    // Craft a search query that combines relevance and recency
+    const searchQuery = `
+        (data center OR datacenter OR "digital infrastructure") 
+        AND (news OR announcement OR update OR development)
+        after:${today}
+        sort:date
+    `.trim();
+
+    const exaResults = await exaSearch(searchQuery);
     if (!exaResults || !exaResults.results) throw Error("no exa results");
     const articlesResponse: ArticlesResponse = {
         newsArticles: exaResults.results.map((result, index) => ({
