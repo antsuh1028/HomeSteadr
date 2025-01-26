@@ -13,7 +13,9 @@ import { db } from "./config";
 
 export interface SavedHome {
     location: string;
-    price: string;
+    currentPrice: number;
+    originalPrice: number;
+    size: number;
 }
 
 export interface User {
@@ -198,6 +200,52 @@ export const userOperations = {
             }
         } catch (error) {
             console.error("Error deleting home:", error);
+            return { success: false, error };
+        }
+    },
+
+    // New function to edit the originalPrice of a home
+    editHomeOriginalPrice: async (
+        userId: string,
+        homeRef: DocumentReference<SavedHome>,
+        newOriginalPrice: number,
+        isWatchlist: boolean
+    ) => {
+        try {
+            const updatedHomeData = { originalPrice: newOriginalPrice };
+            const result = await userOperations.updateHome(userId, homeRef, updatedHomeData, isWatchlist);
+            return result;
+        } catch (error) {
+            console.error("Error editing home original price:", error);
+            return { success: false, error };
+        }
+    },
+    
+    moveHomeToPortfolio: async (
+        userId: string,
+        homeRef: DocumentReference<SavedHome>
+    ) => {
+        try {
+            const userRef = doc(db, "users", userId);
+            const userSnap = await getDoc(userRef);
+
+            if (userSnap.exists()) {
+                // Remove home from watchlist
+                await updateDoc(userRef, {
+                    watchlist: arrayRemove(homeRef),
+                });
+
+                // Add home to portfolio
+                await updateDoc(userRef, {
+                    portfolio: arrayUnion(homeRef),
+                });
+
+                return { success: true };
+            } else {
+                return { success: false, error: "User not found" };
+            }
+        } catch (error) {
+            console.error("Error moving home to portfolio:", error);
             return { success: false, error };
         }
     },

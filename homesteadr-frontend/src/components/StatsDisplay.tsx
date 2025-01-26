@@ -6,8 +6,8 @@ interface Stat {
   
   const stats: Stat[] = [
     { label: "Portfolio Value", value: "$36.0M", color: "text-green-400" },
-    { label: "Monthly Income", value: "$292K", color: "text-green-400" },
-    { label: "Avg. Occupancy", value: "91%" , color: "text-green-400" },
+    { label: "Net Profit", value: "$292K", color: "text-green-400" },
+    { label: "Avg. Sq Footage", value: "91%" , color: "text-green-400" },
     { label: "Properties", value: "3" , color: "text-green-400"},
   ]
   
