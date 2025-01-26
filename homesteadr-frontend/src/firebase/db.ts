@@ -132,6 +132,10 @@ export const userOperations = {
     }
   },
 
+  // in home screen, right side has houses
+  // for each house to be associated with a marker to show up on map
+  // these guys aren't ours  ,they show up based on news articles
+
   updateHome: async (
     userId: string,
     homeRef: DocumentReference<SavedHome>,

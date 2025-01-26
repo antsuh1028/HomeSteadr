@@ -1,4 +1,3 @@
-import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home.tsx";
 import Portfolio from "./pages/Portfolio.tsx";
@@ -16,8 +15,8 @@ function App() {
                 <Layout>
                     <Navbar />
                     <Routes>
-                        <Route path="/home" element={<Home />} />
-                        <Route path="/" element={<LoginPage />} />
+                        <Route path="/" element={<Home />} />
+                        <Route path="/login" element={<LoginPage />} />
                         <Route path="/portfolio" element={<Portfolio />} />
                         <Route path="/example" element={<ProtectedRoute><ExampleUser /></ProtectedRoute>} />
                     </Routes>
