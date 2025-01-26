@@ -22,7 +22,7 @@ interface MapViewProps {
 
 export function MapView({ center, zoom, markers, setShowMetrics }: MapViewProps) {
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: "",
+    googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
   })
 
   const mapCenter = useMemo(() => center, [center])
