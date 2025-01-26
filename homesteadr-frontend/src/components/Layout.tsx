@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+import { Toaster } from "@/components/ui/toaster"
 
 interface LayoutProps {
   children: ReactNode;
@@ -13,6 +14,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             {children}
           </div>
         </main>
+        <Toaster />
       </div>
     </div>
   );
