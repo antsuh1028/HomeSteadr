@@ -6,12 +6,12 @@ import {
   updateDoc,
   DocumentReference,
   arrayUnion,
-  addDoc,
   arrayRemove,
 } from "firebase/firestore";
 import { db } from "./config";
 
 export interface SavedHome {
+  uid: string | null;
   location: string;
   currentPrice: number;
   originalPrice: number;
@@ -139,15 +139,24 @@ export const userOperations = {
 
   addHome: async (
     userId: string,
-    homeData: SavedHome,
+    homeData: Omit<SavedHome, 'uid'>,
     isWatchlist: boolean
   ) => {
     try {
+      // const homesCollectionRef = collection(db, "homes");
+      // const newHomeRef = (await addDoc(
+      //   homesCollectionRef,
+      //   {...homeData, uid: newHomesRef}
+      // )) as DocumentReference<SavedHome>;
+
       const homesCollectionRef = collection(db, "homes");
-      const newHomeRef = (await addDoc(
-        homesCollectionRef,
-        homeData
-      )) as DocumentReference<SavedHome>;
+      const newHomeRef = doc(homesCollectionRef); // Create a new document reference with a unique ID
+      const newHomeId = newHomeRef.id; // Get the unique ID
+
+      // const userRef = doc(db, "users", userId);
+      // const userSnap = await getDoc(userRef);
+
+      await setDoc(newHomeRef, { ...homeData, uid: newHomeId }); 
 
       const userRef = doc(db, "users", userId);
       const userSnap = await getDoc(userRef);
