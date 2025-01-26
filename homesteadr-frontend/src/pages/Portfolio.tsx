@@ -33,73 +33,37 @@ export default function Portfolio() {
   const [selectedView, setSelectedView] = useState<string | null>('portfolio');
 
   return (
-    <div className="flex gap-4">
-      <div className="flex-col">
-        <PortfolioChart />
-        <StatsDisplay />
-      </div>
-      <div>
-        <div className="flex gap-4 w-full">
-          <button
-            className={`flex-grow inline-flex items-center px-4 py-2 rounded-md ${
-              selectedView === 'portfolio' ? 'bg-green-700 text-white' : 'bg-gray-200 text-black'
-            } hover:bg-green-700 transition-colors`}
-            onClick={() => setSelectedView('portfolio')}
-          >
-            <Building className="mr-2 h-4 w-4" />
-            Portfolio
-          </button>
-          <button
-            className={`flex-grow inline-flex items-center px-4 py-2 rounded-md ${
-              selectedView === 'watchlist' ? 'bg-green-700 text-white' : 'bg-gray-200 text-black'
-            } hover:bg-green-700 transition-colors`}
-            onClick={() => setSelectedView('watchlist')}
-          >
-            <Home className="mr-2 h-4 w-4" />
-            Watchlist
-          </button>
+    <div className="h-full flex flex-col">
+      <div className="flex flex-col md:flex-row gap-4 m-4">
+        <div className="flex flex-col w-full md:w-1/2 gap-4">
+          <PortfolioChart />
+          <StatsDisplay />
         </div>
-        <div className="w-full">
+        <div className="flex flex-col w-full md:w-1/2">
+          <div className="flex gap-4 mb-4">
+            <button
+              className={`flex-grow inline-flex items-center px-4 py-2 rounded-md ${
+                selectedView === 'portfolio' ? 'bg-green-700 text-white' : 'bg-gray-200 text-black'
+              } hover:bg-green-700 transition-colors`}
+              onClick={() => setSelectedView('portfolio')}
+            >
+              <Building className="mr-2 h-4 w-4" />
+              Portfolio
+            </button>
+            <button
+              className={`flex-grow inline-flex items-center px-4 py-2 rounded-md ${
+                selectedView === 'watchlist' ? 'bg-green-700 text-white' : 'bg-gray-200 text-black'
+              } hover:bg-green-700 transition-colors`}
+              onClick={() => setSelectedView('watchlist')}
+            >
+              <Home className="mr-2 h-4 w-4" />
+              Watchlist
+            </button>
+          </div>
           {selectedView === 'portfolio' && <PropertyTable data={portfolioData} />}
           {selectedView === 'watchlist' && <PropertyTable data={watchlistData} />}
         </div>
       </div>
-
     </div>
-
   );
 }
-
-
-    // <div className="min-h-screen p-6 space-y-6">
-    //   <div className="w-full">
-    //     <PortfolioChart />
-    //   </div>
-    //   <div className="w-full">
-    //     <StatsDisplay />
-    //   </div>
-      // <div className="flex gap-4 w-full">
-      //   <button
-      //     className={`flex-grow inline-flex items-center px-4 py-2 rounded-md ${
-      //       selectedView === 'portfolio' ? 'bg-green-700 text-white' : 'bg-gray-200 text-black'
-      //     } hover:bg-green-700 transition-colors`}
-      //     onClick={() => setSelectedView('portfolio')}
-      //   >
-      //     <Building className="mr-2 h-4 w-4" />
-      //     Portfolio
-      //   </button>
-      //   <button
-      //     className={`flex-grow inline-flex items-center px-4 py-2 rounded-md ${
-      //       selectedView === 'watchlist' ? 'bg-green-700 text-white' : 'bg-gray-200 text-black'
-      //     } hover:bg-green-700 transition-colors`}
-      //     onClick={() => setSelectedView('watchlist')}
-      //   >
-      //     <Home className="mr-2 h-4 w-4" />
-      //     Watchlist
-      //   </button>
-      // </div>
-      // <div className="w-full">
-      //   {selectedView === 'portfolio' && <PropertyTable data={portfolioData} />}
-      //   {selectedView === 'watchlist' && <PropertyTable data={watchlistData} />}
-      // </div>
-    // </div>

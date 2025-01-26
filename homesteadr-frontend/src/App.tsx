@@ -5,19 +5,23 @@ import Portfolio from "./pages/Portfolio.tsx";
 import Navbar from "./components/Navbar.tsx";
 import LoginPage from "./pages/LoginPage.tsx";
 import { AuthProvider } from "./contexts/AuthContext.tsx";
+import Layout from "./components/Layout.tsx";
+import { ProtectedRoute } from "./components/ProtectedRoute.tsx";
 import ExampleUser from "./pages/ExampleUser.tsx";
 
 function App() {
     return (
         <AuthProvider>
             <BrowserRouter>
-                <Navbar />
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/login" element={<LoginPage />} />
-                    <Route path="/portfolio" element={<Portfolio />} />
-                    <Route path="/example" element={<ExampleUser />} />
-                </Routes>
+                <Layout>
+                    <Navbar />
+                    <Routes>
+                        <Route path="/home" element={<Home />} />
+                        <Route path="/" element={<LoginPage />} />
+                        <Route path="/portfolio" element={<Portfolio />} />
+                        <Route path="/example" element={<ProtectedRoute><ExampleUser /></ProtectedRoute>} />
+                    </Routes>
+                </Layout>
             </BrowserRouter>
         </AuthProvider>
     );

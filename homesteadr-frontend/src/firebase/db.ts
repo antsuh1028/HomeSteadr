@@ -13,7 +13,9 @@ import { db } from "./config";
 
 export interface SavedHome {
     location: string;
-    price: string;
+    currentPrice: number;
+    originalPrice: number;
+    size: number;
 }
 
 export interface User {
@@ -198,6 +200,110 @@ export const userOperations = {
             }
         } catch (error) {
             console.error("Error deleting home:", error);
+            return { success: false, error };
+        }
+    },
+
+    // New function to edit the originalPrice of a home
+    editHomeOriginalPrice: async (
+        userId: string,
+        homeRef: DocumentReference<SavedHome>,
+        newOriginalPrice: number,
+        isWatchlist: boolean
+    ) => {
+        try {
+            const updatedHomeData = { originalPrice: newOriginalPrice };
+            const result = await userOperations.updateHome(userId, homeRef, updatedHomeData, isWatchlist);
+            return result;
+        } catch (error) {
+            console.error("Error editing home original price:", error);
+            return { success: false, error };
+        }
+    },
+
+    // New function to move a home from watchlist to portfolio
+    moveHomeToPortfolio: async (
+        userId: string,
+        homeRef: DocumentReference<SavedHome>
+    ) => {
+        try {
+            const userRef = doc(db, "users", userId);
+            const userSnap = await getDoc(userRef);
+
+            if (userSnap.exists()) {
+                // Remove home from watchlist
+                await updateDoc(userRef, {
+                    watchlist: arrayRemove(homeRef),
+                });
+
+                // Add home to portfolio
+                await updateDoc(userRef, {
+                    portfolio: arrayUnion(homeRef),
+                });
+
+                return { success: true };
+            } else {
+                return { success: false, error: "User not found" };
+            }
+        } catch (error) {
+            console.error("Error moving home to portfolio:", error);
+            return { success: false, error };
+        }
+    },
+
+    // New function to get the sum of the current price of the portfolio
+    getPortfolioCurrentPriceSum: async (userId: string) => {
+        try {
+            const userRef = doc(db, "users", userId);
+            const userSnap = await getDoc(userRef);
+
+            if (userSnap.exists()) {
+                const userData = userSnap.data() as User;
+
+                const portfolioData = await Promise.all(
+                    userData.portfolio.map(async (homeRef) => {
+                        const homeSnap = await getDoc(homeRef);
+                        return homeSnap.data() as SavedHome;
+                    })
+                );
+
+                const totalCurrentPrice = portfolioData.reduce((sum, home) => sum + home.currentPrice, 0);
+
+                return { success: true, totalCurrentPrice };
+            } else {
+                return { success: false, error: "User not found" };
+            }
+        } catch (error) {
+            console.error("Error getting portfolio current price sum:", error);
+            return { success: false, error };
+        }
+    },
+
+    getPortfolioProfit: async (userId: string) => {
+        try {
+            const userRef = doc(db, "users", userId);
+            const userSnap = await getDoc(userRef);
+
+            if (userSnap.exists()) {
+                const userData = userSnap.data() as User;
+
+                const portfolioData = await Promise.all(
+                    userData.portfolio.map(async (homeRef) => {
+                        const homeSnap = await getDoc(homeRef);
+                        return homeSnap.data() as SavedHome;
+                    })
+                );
+
+                const totalCurrentPrice = portfolioData.reduce((sum, home) => sum + home.currentPrice, 0);
+                const totalOriginalPrice = portfolioData.reduce((sum, home) => sum + home.originalPrice, 0);
+                const profit = totalCurrentPrice - totalOriginalPrice;
+
+                return { success: true, profit };
+            } else {
+                return { success: false, error: "User not found" };
+            }
+        } catch (error) {
+            console.error("Error calculating portfolio profit:", error);
             return { success: false, error };
         }
     },

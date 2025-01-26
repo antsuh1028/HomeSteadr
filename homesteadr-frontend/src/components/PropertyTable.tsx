@@ -5,10 +5,8 @@ interface Property {
   location: string
   type: string
   sqFt: number
-  value: string
-  monthlyIncome: string
-  occupancy: string
-  yearBuilt: number
+  purchasePrice: number
+  value: number
 }
 
 export function PropertyTable({ data }: { data: Property[] }) {
@@ -24,11 +22,8 @@ export function PropertyTable({ data }: { data: Property[] }) {
                 <th className="sticky top-0 bg-card text-left p-4 text-sm font-medium text-gray-400">Type</th>
                 <th className="sticky top-0 bg-card text-right p-4 text-sm font-medium text-gray-400">Sq Ft</th>
                 <th className="sticky top-0 bg-card text-right p-4 text-sm font-medium text-gray-400">Value</th>
-                <th className="sticky top-0 bg-card text-right p-4 text-sm font-medium text-gray-400">
-                  Monthly Income
-                </th>
-                <th className="sticky top-0 bg-card text-right p-4 text-sm font-medium text-gray-400">Occupancy</th>
-                <th className="sticky top-0 bg-card text-right p-4 text-sm font-medium text-gray-400">Year Built</th>
+                <th className="sticky top-0 bg-card text-right p-4 text-sm font-medium text-gray-400">Purchase Price</th>
+                <th className="sticky top-0 bg-card text-right p-4 text-sm font-medium text-gray-400">Current Price</th>
               </tr>
             </thead>
             <tbody>
@@ -39,9 +34,7 @@ export function PropertyTable({ data }: { data: Property[] }) {
                   <td className="p-4 text-sm text-gray-300">{property.type}</td>
                   <td className="p-4 text-sm text-gray-300 text-right">{property.sqFt.toLocaleString()}</td>
                   <td className="p-4 text-sm text-gray-300 text-right">{property.value}</td>
-                  <td className="p-4 text-sm text-gray-300 text-right">{property.monthlyIncome}</td>
-                  <td className="p-4 text-sm text-gray-300 text-right">{property.occupancy}</td>
-                  <td className="p-4 text-sm text-gray-300 text-right">{property.yearBuilt}</td>
+                  <td className="p-4 text-sm text-gray-300 text-right">{property.purchasePrice}</td>
                 </tr>
               ))}
             </tbody>
