@@ -356,4 +356,42 @@ export const userOperations = {
       return { success: false, error };
     }
   },
+
+  getUserData: async (userId: string) => {
+    try {
+      const userRef = doc(db, "users", userId);
+      const userSnap = await getDoc(userRef);
+
+      if (userSnap.exists()) {
+        const userData = userSnap.data() as User;
+
+        const portfolioData = await Promise.all(
+          userData.portfolio.map(async (homeRef) => {
+            const homeSnap = await getDoc(homeRef);
+            return homeSnap.data() as SavedHome;
+          })
+        );
+
+        const watchlistData = await Promise.all(
+          userData.watchlist.map(async (homeRef) => {
+            const homeSnap = await getDoc(homeRef);
+            return homeSnap.data() as SavedHome;
+          })
+        );
+
+        return {
+          success: true,
+          data: {
+            portfolio: portfolioData,
+            watchlist: watchlistData,
+          },
+        };
+      } else {
+        return { success: false, error: "User not found" };
+      }
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+      return { success: false, error };
+    }
+  },
 };

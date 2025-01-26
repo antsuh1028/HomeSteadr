@@ -17,9 +17,11 @@ const initialStats: Stat[] = [
 
 export function StatsDisplay() {
   const [stats, setStats] = useState<Stat[]>(initialStats);
-  const { firebaseUser } = useAuth(); // Assuming useAuth provides firebaseUser
+  const { firebaseUser,  } = useAuth(); // Assuming useAuth provides firebaseUser
 
   const handleRefresh = async () => {
+    console.log("Refresh button clicked"); // Debugging statement
+    console.log(firebaseUser);
     if (!firebaseUser) return;
 
     try {

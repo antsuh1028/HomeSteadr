@@ -18,7 +18,14 @@ function App() {
                         <Route path="/" element={<Home />} />
                         <Route path="/login" element={<LoginPage />} />
                         <Route path="/portfolio" element={<Portfolio />} />
-                        <Route path="/example" element={<ProtectedRoute><ExampleUser /></ProtectedRoute>} />
+                        <Route
+                            path="/example"
+                            element={
+                                <ProtectedRoute>
+                                    <ExampleUser />
+                                </ProtectedRoute>
+                            }
+                        />
                     </Routes>
                 </Layout>
             </BrowserRouter>
