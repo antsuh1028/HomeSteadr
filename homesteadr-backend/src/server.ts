@@ -10,11 +10,13 @@ const app = express();
 
 app.use(cors({ 
     origin: '*',
-    credentials: true
 }));
 app.use(logger('dev'))
 app.use(cookieParser());
-app.use("/api/ai", aiRoutes);
+app.get("/", (req, res) => {
+  res.json({ message: "AI routes working" });
+});
+app.use("/api/", aiRoutes);
 app.use(notFoundHandler);
 app.use(errorHandler);
 
