@@ -302,8 +302,21 @@ router.get("/neighborhood-risk", async (req, res) => {
     }
 });
 
-const DATAFINITI_API_KEY = process.env.DATAFINITI_API_KEY as string | undefined;
-if (!DATAFINITI_API_KEY) throw Error("no datafinity key");
+let i = 0;
+const datafinitiApiKeyJson = process.env.DATAFINITI_API_KEY as string | undefined;
+if (!datafinitiApiKeyJson) {
+    throw new Error("No Datafiniti API key provided");
+}
+let datafinitiApiKeys: string[];
+try {
+    const parsed = JSON.parse(datafinitiApiKeyJson);
+    if (!Array.isArray(parsed.keys)) {
+        throw new Error();
+    }
+    datafinitiApiKeys = parsed.keys;
+} catch {
+    throw new Error("Invalid Datafiniti API key format");
+}
 const format = "JSON";
 // const query = "country:US";
 const num_records = 5;
@@ -521,13 +534,13 @@ router.post("/datafiniti", async (req, res) => {
                     {
                         method: "POST",
                         headers: {
-                            Authorization: `Bearer ${DATAFINITI_API_KEY}`,
+                            Authorization: `Bearer ${datafinitiApiKeys[i % datafinitiApiKeys.length]}`,
                             "Content-Type": "application/json",
                         },
                         body: JSON.stringify(requestBody),
                     }
                 );
-
+                i++; 
                 const data = await response.json();
 
                 const transformedData= await transformApiResponse(data);
