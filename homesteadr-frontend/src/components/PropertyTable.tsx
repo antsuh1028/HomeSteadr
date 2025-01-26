@@ -46,17 +46,15 @@ export function PropertyTable({ data }: { data: Property[] }) {
                   key={property.location}
                   className="border-b border-gray-700"
                 >
-                  <td className="p-4 text-sm text-gray-300">
-                    {property.location}
-                  </td>
-                  <td className="p-4 text-sm text-gray-300">{property.type}</td>
-                  <td className="p-4 text-sm text-gray-300 text-right">
+                  <td className="p-4 text-sm ">{property.location}</td>
+                  <td className="p-4 text-sm ">{property.type}</td>
+                  <td className="p-4 text-sm  text-right">
                     {property.size.toLocaleString()}
                   </td>
-                  <td className="p-4 text-sm text-gray-300 text-right">
+                  <td className="p-4 text-sm  text-right">
                     {property.originalPrice.toLocaleString()}
                   </td>
-                  <td className="p-4 text-sm text-gray-300 text-right">
+                  <td className="p-4 text-sm  text-right">
                     {property.currentPrice.toLocaleString()}
                   </td>
                 </tr>
