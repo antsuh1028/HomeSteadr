@@ -33,6 +33,7 @@ const LoginPage = () => {
             if (isLogin) {
                 await signInWithEmailAndPassword(auth, email, password);
                 console.log("User logged in successfully");
+                window.location.href = "/home";
                 // TODO: Redirect to dashboard or home page
             } else {
                 const user = await createUserWithEmailAndPassword(

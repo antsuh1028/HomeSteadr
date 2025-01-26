@@ -1,22 +1,27 @@
 import type React from "react"
+import saveIcon from "../../../assets/saveicon.jpg"
+import houseIcon from "../../../assets/houseicon.png"
+
 
 interface PropertyCardProps {
-  title: string
-  location: string
-  price: number
-  sqft: number
-  buildDate: string
-  type: string
-  onClick: () => void
-  isSelected: boolean
-}
-
-export const PropertyCard: React.FC<PropertyCardProps> = ({
-  title,
-  location,
+  pictureUrl?: string;
+  price: number;
+  squareFeet: number;
+  address: string;
+  geolocation: {
+    lat: string;
+    long: string;
+  };
+  type?: string;
+  onClick: () => void;
+  isSelected: boolean;
+ }
+ 
+ export const PropertyCard: React.FC<PropertyCardProps> = ({
+  pictureUrl,
   price,
-  sqft,
-  buildDate,
+  squareFeet,
+  address,
   type,
   onClick,
   isSelected,
@@ -28,19 +33,29 @@ export const PropertyCard: React.FC<PropertyCardProps> = ({
       }`}
       onClick={onClick}
     >
-      <div className="flex justify-between items-center"> 
-        <h2 className="text-lg font-semibold">{title} test</h2>
+      {pictureUrl ? (
+ <img 
+   src={pictureUrl} 
+   alt="Property" 
+   className="w-full h-48 object-cover rounded-lg mb-4"
+ />
+) : (
+ <img
+   src={houseIcon} 
+   alt="Property placeholder"
+   className="w-full h-48 object-cover rounded-lg mb-4 bg-gray-200"
+ />
+)}
+      <div className="flex justify-between items-center">
+        <h2 className="text-lg font-semibold">{address.split(',')[0]}</h2>
         <button className="ml-2 p-2 rounded-full hover:bg-gray-200">
-          <img src="/path/to/logo.png" alt="Logo" className="w-6 h-6" />
-        </button>
+          <img src={saveIcon} alt="Property" className="w-6 h-6" />
+        </button> 
       </div>
-      <p className="text-gray-600">{location}</p>
+      <p className="text-gray-600">{address}</p>
       <p className="text-gray-800 font-medium">${price.toLocaleString()}</p>
-      <p className="text-gray-600">
-        {sqft} sqft • Built {buildDate}
-      </p>
+      <p className="text-gray-600">{squareFeet} sqft</p>
       <p className="text-gray-600">{type}</p>
     </div>
   )
 }
-

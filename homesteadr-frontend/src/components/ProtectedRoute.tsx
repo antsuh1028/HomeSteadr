@@ -1,21 +1,21 @@
 // components/ProtectedRoute.tsx
 import { useAuth } from "@/contexts/AuthContext";
-import { useRouter } from "react-router-dom";
+import { useNavigate  } from "react-router-dom";
 import { useEffect } from "react";
 
 export function ProtectedRoute({ children }: { children: React.ReactNode }) {
-  const { user, loading } = useAuth();
-  const router = useRouter();
+  const { userData, loading } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (!loading && !user) {
-      router.push("/login");
+    if (!loading && !userData) {
+      navigate("/login");
     }
-  }, [user, loading, router]);
+  }, [userData, loading, navigate]);
 
   if (loading) {
     return <div>Loading...</div>; // Or your loading component
   }
 
-  return user ? <>{children}</> : null;
+  return userData ? <>{children}</> : null;
 }
